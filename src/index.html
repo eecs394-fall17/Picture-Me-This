@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
   <meta charset="UTF-8">
@@ -35,6 +35,19 @@
   <!-- Ionic's root component and where the app will load -->
   <ion-app></ion-app>
 
+    <script src="https://www.gstatic.com/firebasejs/4.6.0/firebase.js"></script>
+    <script>
+    // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyDKlhKzqiOPHRGG1MwDou2vNdPkYTyowEE",
+    authDomain: "picture-me-this.firebaseapp.com",
+    databaseURL: "https://picture-me-this.firebaseio.com",
+    projectId: "picture-me-this",
+    storageBucket: "picture-me-this.appspot.com",
+    messagingSenderId: "106808503188"
+  };
+  firebase.initializeApp(config);
+    </script>
   <!-- The polyfills js is generated during the build process -->
   <script src="build/polyfills.js"></script>
 
