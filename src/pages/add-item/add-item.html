@@ -14,5 +14,44 @@
 
 
 <ion-content padding>
-
+  <div class="content">
+    <div>
+      <ion-item>
+        <ion-label color="primary" floating>Item Name</ion-label>
+        <ion-input [(ngModel)]="departureAddress" (ionChange)="updateOrigin()"></ion-input>
+      </ion-item>
+      <ion-list radio-group [(ngModel)]="relationship">
+        <ion-item>
+          <ion-label>Friends</ion-label>
+          <ion-radio value="friends" checked></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>Family</ion-label>
+          <ion-radio value="family"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>Enemies</ion-label>
+          <ion-radio value="enemies" [disabled]="isDisabled"></ion-radio>
+        </ion-item>
+      </ion-list>
+      <ion-item>
+        <ion-label color="primary" floating>Destination</ion-label>
+        <ion-input [(ngModel)]="arrivalAddress" (ionChange)="updateDestination()"></ion-input>
+      </ion-item>
+      <ion-list *ngIf="acDestinations.length > 0" style="position: absolute; z-index: 1000">
+        <ion-item *ngFor="let item of acDestinations" (click)="selectDestination(item)">
+          {{ item.description }}
+        </ion-item>
+      </ion-list>
+      <ion-item>
+        <ion-label color="primary" floating>Get Ready Time (minutes)</ion-label>
+        <ion-input type="number" [(ngModel)]="readyTime" required></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Arrival Time</ion-label>
+        <ion-datetime displayFormat="hh:mm A" [(ngModel)]="arrivalTimeString" (ionChange)="arrivalTimeChange()"></ion-datetime>
+      </ion-item>
+    </div>
+    <button ion-button (click)="CalculateRoute()" block large>Save Item</button>
+  </div>
 </ion-content>
