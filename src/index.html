@@ -58,5 +58,20 @@
   <!-- The main bundle js is generated during the build process -->
   <script src="build/main.js"></script>
 
+    <script>
+        var database = firebase.firestore();
+        var userKey = "hello";
+        var picRef = "picRefTest";
+
+        function addTopToUser() {
+            database.collection("Users").doc(userKey).collection("Tops").doc(picRef).set({
+                color: "blue",
+                type: "formal"
+
+            });
+        }
+
+    </script>
+
 </body>
 </html>
