@@ -7,6 +7,11 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 
+import { FIREBASE_CONFIG } from "./app.firebase.config";
+import * as firebase from 'firebase';
+import 'firebase/firestore';
+
+
 @NgModule({
   declarations: [
     MyApp,

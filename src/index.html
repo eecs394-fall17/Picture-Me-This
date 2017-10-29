@@ -10,7 +10,7 @@
   <link rel="icon" type="image/x-icon" href="assets/icon/favicon.ico">
   <link rel="manifest" href="manifest.json">
   <meta name="theme-color" content="#4e8ef7">
-  
+
   <!-- add to homescreen for ios -->
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
@@ -39,17 +39,8 @@
     <script src="https://www.gstatic.com/firebasejs/4.6.0/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/4.6.0/firebase.js"></script>
     <script>
-        
-    // Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyDKlhKzqiOPHRGG1MwDou2vNdPkYTyowEE",
-    authDomain: "picture-me-this.firebaseapp.com",
-    databaseURL: "https://picture-me-this.firebaseio.com",
-    projectId: "picture-me-this",
-    storageBucket: "picture-me-this.appspot.com",
-    messagingSenderId: "106808503188"
-  };
-  firebase.initializeApp(config);
+
+
     </script>
   <!-- The polyfills js is generated during the build process -->
   <script src="build/polyfills.js"></script>
@@ -62,17 +53,17 @@
   <script src="build/main.js"></script>
 
     <script>
-        var database = firebase.firestore();
-        var userKey = "hello";
-        var picRef = "picRefTest";
-
-        function addTopToUser() {
-            database.collection("Users").doc(userKey).collection("Tops").doc(picRef).set({
-                color: "blue",
-                type: "formal"
-
-            });
-        }
+//        var database = firebase.firestore();
+//        var userKey = "hello";
+//        var picRef = "picRefTest";
+//
+//        function addTopToUser() {
+//            database.collection("Users").doc(userKey).collection("Tops").doc(picRef).set({
+//                color: "blue",
+//                type: "formal"
+//
+//            });
+//        }
 
     </script>
 
