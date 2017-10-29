@@ -7,9 +7,8 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 
-import { FIREBASE_CONFIG } from "./app.firebase.config";
-import * as firebase from 'firebase';
-import 'firebase/firestore';
+import {HttpModule} from "@angular/http";
+import { DataServiceProvider } from '../providers/data-service/data-service';
 
 
 @NgModule({
@@ -18,8 +17,9 @@ import 'firebase/firestore';
     HomePage
   ],
   imports: [
+    HttpModule,
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -29,7 +29,8 @@ import 'firebase/firestore';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    DataServiceProvider
   ]
 })
 export class AppModule {}
