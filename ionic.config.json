@@ -2,5 +2,7 @@
   "name": "Picture-Me-This",
   "app_id": "fedd4184",
   "type": "ionic-angular",
-  "integrations": {}
+  "integrations": {
+    "cordova": {}
+  }
 }
