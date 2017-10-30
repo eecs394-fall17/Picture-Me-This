@@ -9,6 +9,9 @@ import { HomePage } from '../pages/home/home';
 
 import {HttpModule} from "@angular/http";
 import { DataServiceProvider } from '../providers/data-service/data-service';
+import {AngularFireModule} from "angularfire2";
+import {FIREBASE_CONFIG} from "./app.firebase.config";
+import {AngularFirestoreModule} from "angularfire2/firestore";
 
 
 @NgModule({
@@ -20,6 +23,8 @@ import { DataServiceProvider } from '../providers/data-service/data-service';
     HttpModule,
     BrowserModule,
     IonicModule.forRoot(MyApp),
+    AngularFireModule.initializeApp(FIREBASE_CONFIG),
+    AngularFirestoreModule.enablePersistence()
   ],
   bootstrap: [IonicApp],
   entryComponents: [

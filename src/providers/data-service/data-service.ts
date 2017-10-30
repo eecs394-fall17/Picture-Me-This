@@ -4,6 +4,7 @@ import 'rxjs/add/operator/map';
 
 import * as firebase from "firebase";
 import 'firebase/firestore';
+import {AngularFirestore} from "angularfire2/firestore";
 
 /*
   Generated class for the DataServiceProvider provider.
@@ -17,10 +18,10 @@ import 'firebase/firestore';
 */
 @Injectable()
 export class DataServiceProvider {
-  public database;
+  public db;
 
-  constructor(public http: Http) {
-    this.database = firebase.firestore();
+  constructor(public http: Http, public afs: AngularFirestore) {
+    this.db = firebase.firestore();
   }
 
 }

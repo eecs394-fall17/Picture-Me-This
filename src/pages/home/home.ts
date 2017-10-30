@@ -9,16 +9,20 @@ import {Garment} from "../../models/garment";
   templateUrl: 'home.html'
 })
 export class HomePage {
+  garments;
 
   constructor(public navCtrl: NavController,
               public alertCtrl: AlertController,
-              public db: DataServiceProvider) {
-
+              public dsp: DataServiceProvider) {
+    // TODO user key needs to be streamlined, whenever we decide to develop auth.
+    // TODO database calls need to be streamlined by creating functions in DataServiceProvider.
+    this.garments = this.dsp.afs.collection("Users").doc("V30pPSFf4O4pT8Mu72YR").collection("Clothes").valueChanges();
+    console.log(this.garments);
   }
 
   addGarment() {
     var userKey = "V30pPSFf4O4pT8Mu72YR";
-    console.log(this.db.database);
+    console.log(this.dsp.db);
 
     const input = this.alertCtrl.create({
       title: "Add A Garment",
@@ -44,11 +48,13 @@ export class HomePage {
         {
           text: "Submit",
           handler: data => {
-            let g = new Garment(data.Name, data.Type, data.Color);
-            console.log(g);
-            this.db.database.collection("Users").doc(userKey).collection("Clothes").doc(g.name).set({
-              color: g.color,
-              type: g.type
+            // let g = new Garment(data.Name, data.Type, data.Color);
+            // console.log(g);
+            // TODO database calls need to be streamlined by creating functions in DataServiceProvider.
+            this.dsp.db.collection("Users").doc(userKey).collection("Clothes").doc(data.Name).set({
+              color: data.Color,
+              type: data.Type,
+              name: data.Name
             })
           }
         }

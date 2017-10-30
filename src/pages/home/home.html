@@ -10,32 +10,41 @@
 
   <ion-list>
     <ion-list-header>
-      Tops
+      My Clothes
     </ion-list-header>
 
-    <ion-item>
-      <ion-label>Yellow Shirt</ion-label>
-      <ion-checkbox checked="true"></ion-checkbox>
+    <ion-item *ngFor="let garment of garments | async">
+      <h1>{{garment.name}}</h1>
+      <p>Type: {{garment.type}}</p>
+      <p>Color: {{garment.color}}</p>
     </ion-item>
+    <!--<ion-list-header>-->
+      <!--Tops-->
+    <!--</ion-list-header>-->
 
-    <ion-item>
-      <ion-label>Blue Shirt</ion-label>
-      <ion-checkbox checked="true"></ion-checkbox>
-    </ion-item>
+    <!--<ion-item>-->
+      <!--<ion-label>Yellow Shirt</ion-label>-->
+      <!--<ion-checkbox checked="true"></ion-checkbox>-->
+    <!--</ion-item>-->
 
-    <ion-list-header>
-      Bottoms
-    </ion-list-header>
+    <!--<ion-item>-->
+      <!--<ion-label>Blue Shirt</ion-label>-->
+      <!--<ion-checkbox checked="true"></ion-checkbox>-->
+    <!--</ion-item>-->
 
-    <ion-item>
-      <ion-label>Black Pants</ion-label>
-      <ion-checkbox checked="true"></ion-checkbox>
-    </ion-item>
+    <!--<ion-list-header>-->
+      <!--Bottoms-->
+    <!--</ion-list-header>-->
 
-    <ion-item>
-      <ion-label>Blue Pants</ion-label>
-      <ion-checkbox checked="true"></ion-checkbox>
-    </ion-item>
+    <!--<ion-item>-->
+      <!--<ion-label>Black Pants</ion-label>-->
+      <!--<ion-checkbox checked="true"></ion-checkbox>-->
+    <!--</ion-item>-->
+
+    <!--<ion-item>-->
+      <!--<ion-label>Blue Pants</ion-label>-->
+      <!--<ion-checkbox checked="true"></ion-checkbox>-->
+    <!--</ion-item>-->
 
   </ion-list>
 
