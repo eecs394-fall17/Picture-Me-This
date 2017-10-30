@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import {AlertController, NavController} from 'ionic-angular';
 import 'firebase/firestore';
 import {DataServiceProvider} from "../../providers/data-service/data-service";
+import {Garment} from "../../models/garment";
 
 @Component({
   selector: 'page-home',
@@ -9,22 +10,52 @@ import {DataServiceProvider} from "../../providers/data-service/data-service";
 })
 export class HomePage {
 
-  constructor(public navCtrl: NavController, public db: DataServiceProvider) {
+  constructor(public navCtrl: NavController,
+              public alertCtrl: AlertController,
+              public db: DataServiceProvider) {
 
   }
 
-  addTopToUserTest() {
+  addGarment() {
     var userKey = "V30pPSFf4O4pT8Mu72YR";
-    var picRef = "picRef";
-    console.log("about to edit database");
     console.log(this.db.database);
-    console.log(this.db.database.collection("Users"));
 
-    this.db.database.collection("Users").doc(userKey).collection("Tops").doc(picRef).update({
-      color: "blue",
-      type: "formal"
+    const input = this.alertCtrl.create({
+      title: "Add A Garment",
+      inputs: [
+        {
+          name: "Name",
+          placeholder: "Garment Name"
+        },
+        {
+          name: "Type",
+          placeholder: "Garment Type"
+        },
+        {
+          name: "Color",
+          placeholder: "Garment Color"
+        }
+      ],
+      buttons: [
+        {
+          text: "Cancel",
+          role: "cancel"
+        },
+        {
+          text: "Submit",
+          handler: data => {
+            let g = new Garment(data.Name, data.Type, data.Color);
+            console.log(g);
+            this.db.database.collection("Users").doc(userKey).collection("Clothes").doc(g.name).set({
+              color: g.color,
+              type: g.type
+            })
+          }
+        }
+      ]
+    })
 
-    });
+    input.present();
   }
 
 }
