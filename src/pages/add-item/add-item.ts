@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {Garment} from "../../models/garment";
+import {DataServiceProvider} from "../../providers/data-service/data-service";
+import {HomePage} from "../home/home";
 
 /**
  * Generated class for the AddItemPage page.
@@ -14,14 +17,19 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'add-item.html',
 })
 export class AddItemPage {
+  garment: Garment;
 
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-
+  constructor(public navCtrl: NavController,
+              public dsp: DataServiceProvider,
+              public navParams: NavParams) {
+    this.garment = new Garment();
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad AddItemPage');
+  saveClothing() {
+    // TODO don't continue if a field is missing.
+    this.garment.color = this.garment.color.toLowerCase();
+    this.dsp.addClothing(this.garment.type + "s", this.garment);
+    this.navCtrl.pop();
   }
 
 }

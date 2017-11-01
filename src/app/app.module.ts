@@ -12,12 +12,14 @@ import { DataServiceProvider } from '../providers/data-service/data-service';
 import {AngularFireModule} from "angularfire2";
 import {FIREBASE_CONFIG} from "./app.firebase.config";
 import {AngularFirestoreModule} from "angularfire2/firestore";
+import {AddItemPage} from "../pages/add-item/add-item";
 
 
 @NgModule({
   declarations: [
     MyApp,
-    HomePage
+    HomePage,
+    AddItemPage
   ],
   imports: [
     HttpModule,
@@ -29,7 +31,8 @@ import {AngularFirestoreModule} from "angularfire2/firestore";
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
+    HomePage,
+    AddItemPage
   ],
   providers: [
     StatusBar,
