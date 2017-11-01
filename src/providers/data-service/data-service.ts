@@ -57,7 +57,11 @@ export class DataServiceProvider {
 
   addClothing(type: string, garment: Garment) {
     // TODO check if name is already taken?
-    this.db.collection("Users").doc(this.uid).collection(type).set(garment);
+    this.db.collection("Users").doc(this.uid).collection(type).doc(garment.name).set({
+      name: garment.name,
+      type: garment.type,
+      color: garment.color
+    });
   }
 
 }
