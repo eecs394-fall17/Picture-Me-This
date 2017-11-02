@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {Garment} from "../../models/garment";
 import {Outfit} from "../../models/outfit";
+
+import {DataServiceProvider} from "../../providers/data-service/data-service";
 /**
  * Generated class for the OutfitDisplayPage page.
  *
@@ -19,9 +21,9 @@ export class OutfitDisplayPage {
     top: Garment;
     bottom: Garment;
     shoe: Garment;
-  outfit: Outfit;
+    outfit: Outfit;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public dsp: DataServiceProvider) {
     let name = navParams.get('name');
     let type = navParams.get('type');
     let color = navParams.get('color');
@@ -51,13 +53,14 @@ export class OutfitDisplayPage {
         this.top = this.garment;
         this.bottom = new Garment();
         this.bottom.name = "test";
+        //this.bottom.name = this.dsp.getPieceofClothing("Bottoms", this.garment.color);
         this.shoe = new Garment();
         this.shoe.name = "testShoe";
     }
     else if (type == "Bottom") {
         this.bottom = this.garment;
         this.top = new Garment();
-        this.top.name = "test2";
+        this.top.name = "testTop";
         this.shoe = new Garment();
         this.shoe.name = "testShoe";
     }
