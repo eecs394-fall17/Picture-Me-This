@@ -15,7 +15,10 @@ import {Outfit} from "../../models/outfit";
   templateUrl: 'outfit-display.html',
 })
 export class OutfitDisplayPage {
-  garment: Garment;
+    garment: Garment;
+    top: Garment;
+    bottom: Garment;
+    shoe: Garment;
   outfit: Outfit;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
@@ -43,6 +46,29 @@ export class OutfitDisplayPage {
     //   let bottom = ;
     //   this.outfit = new Outfit(top, bottom, name);
     // }
+
+    if (type == "Top") {
+        this.top = this.garment;
+        this.bottom = new Garment();
+        this.bottom.name = "test";
+        this.shoe = new Garment();
+        this.shoe.name = "testShoe";
+    }
+    else if (type == "Bottom") {
+        this.bottom = this.garment;
+        this.top = new Garment();
+        this.top.name = "test2";
+        this.shoe = new Garment();
+        this.shoe.name = "testShoe";
+    }
+    else{
+        this.shoe = this.garment;
+        this.top = new Garment();
+        this.top.name = "testTop";
+        this.bottom = new Garment();
+        this.bottom.name = "testBottom";
+       
+    }
   }
 
   ionViewDidLoad() {
