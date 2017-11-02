@@ -20,7 +20,7 @@ import {AddItemPage} from "../pages/add-item/add-item";
   declarations: [
     MyApp,
     HomePage,
-    OutfitDisplayPage
+    OutfitDisplayPage,
     AddItemPage
   ],
   imports: [
@@ -34,7 +34,7 @@ import {AddItemPage} from "../pages/add-item/add-item";
   entryComponents: [
     MyApp,
     HomePage,
-    OutfitDisplayPage
+    OutfitDisplayPage,
     AddItemPage
   ],
   providers: [

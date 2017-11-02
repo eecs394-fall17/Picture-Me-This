@@ -22,7 +22,10 @@ export class OutfitDisplayPage {
     let name = navParams.get('name');
     let type = navParams.get('type');
     let color = navParams.get('color');
-    this.garment = new Garment(name, type, color);
+    this.garment = new Garment();
+    this.garment.name = name;
+    this.garment.type = type;
+    this.garment.color = color;
 
     // Put in random tops, bottoms, and shoes in the empty variables
     // if (type === 'Top') {
