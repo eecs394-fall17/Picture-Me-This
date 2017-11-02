@@ -12,13 +12,17 @@ import {AddItemPage} from "../add-item/add-item";
 })
 export class HomePage {
   garments;
-
+  garmentsB;
+  garmentsS;
   constructor(public navCtrl: NavController,
               public alertCtrl: AlertController,
               public dsp: DataServiceProvider) {
     // TODO user key needs to be streamlined, whenever we decide to develop auth.
     // TODO database calls need to be streamlined by creating functions in DataServiceProvider.
-    this.garments = this.dsp.afs.collection("Users").doc("V30pPSFf4O4pT8Mu72YR").collection("Clothes").valueChanges();
+      this.garments = this.dsp.afs.collection("Users").doc("hello").collection("Tops").valueChanges();
+      this.garmentsB = this.dsp.afs.collection("Users").doc("hello").collection("Bottoms").valueChanges();
+
+      this.garmentsS = this.dsp.afs.collection("Users").doc("hello").collection("Shoes").valueChanges();
     console.log(this.garments);
   }
 
@@ -29,7 +33,6 @@ export class HomePage {
       color: garment.color
     });
   }
-
   addGarment() {
 
     this.navCtrl.push(AddItemPage);
