@@ -52,7 +52,7 @@ export class DataServiceProvider {
   }
 
   getClothes(type: string) {
-    return this.db.collection("Users").doc(this.uid).collection(type).get();
+    return this.db.collection("Users").doc(this.uid).collection(type);
   }
 
   getPieceofClothing(type: string, color: string) {
