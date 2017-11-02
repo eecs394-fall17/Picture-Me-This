@@ -13,6 +13,7 @@ import { DataServiceProvider } from '../providers/data-service/data-service';
 import {AngularFireModule} from "angularfire2";
 import {FIREBASE_CONFIG} from "./app.firebase.config";
 import {AngularFirestoreModule} from "angularfire2/firestore";
+import {AddItemPage} from "../pages/add-item/add-item";
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import {AngularFirestoreModule} from "angularfire2/firestore";
     MyApp,
     HomePage,
     OutfitDisplayPage
+    AddItemPage
   ],
   imports: [
     HttpModule,
@@ -33,6 +35,7 @@ import {AngularFirestoreModule} from "angularfire2/firestore";
     MyApp,
     HomePage,
     OutfitDisplayPage
+    AddItemPage
   ],
   providers: [
     StatusBar,
