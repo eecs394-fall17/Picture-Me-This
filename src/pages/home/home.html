@@ -12,21 +12,27 @@
     <ion-list-header>
       My Clothes
     </ion-list-header>
-
+      <ion-item-divider>
+          Tops
+      </ion-item-divider>
     <ion-item *ngFor="let garment of garments | async">
       <h1>{{garment.name}}</h1>
       <p>Type: {{garment.type}}</p>
       <p>Color: {{garment.color}}</p>
       <button ion-button (click)="pushDisplayOutfit(garment)">Make Outfit</button>
     </ion-item>
-
+      <ion-item-divider>
+          Bottoms
+      </ion-item-divider>
       <ion-item *ngFor="let garmentBottom of garmentsB | async">
           <h1>{{garmentBottom.name}}</h1>
           <p>Type: {{garmentBottom.type}}</p>
           <p>Color: {{garmentBottom.color}}</p>
           <button ion-button (click)="pushDisplayOutfit(garmentBottom)">Make Outfit</button>
       </ion-item>
-
+      <ion-item-divider>
+          Shoes
+      </ion-item-divider>
       <ion-item *ngFor="let garmentShoe of garmentsS | async">
           <h1>{{garmentShoe.name}}</h1>
           <p>Type: {{garmentShoe.type}}</p>
