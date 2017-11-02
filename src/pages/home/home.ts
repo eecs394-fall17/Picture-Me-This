@@ -3,6 +3,7 @@ import {AlertController, NavController} from 'ionic-angular';
 import 'firebase/firestore';
 import {DataServiceProvider} from "../../providers/data-service/data-service";
 import {Garment} from "../../models/garment";
+import {OutfitDisplayPage} from '../outfit-display/outfit-display';
 
 @Component({
   selector: 'page-home',
@@ -18,6 +19,14 @@ export class HomePage {
     // TODO database calls need to be streamlined by creating functions in DataServiceProvider.
     this.garments = this.dsp.afs.collection("Users").doc("V30pPSFf4O4pT8Mu72YR").collection("Clothes").valueChanges();
     console.log(this.garments);
+  }
+
+  pushDisplayOutfit(garment){
+    this.navCtrl.push(OutfitDisplayPage, {
+      name: garment.name,
+      type: garment.type,
+      color: garment.color
+    });
   }
 
   addGarment() {

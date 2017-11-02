@@ -6,6 +6,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
+import { OutfitDisplayPage} from '../pages/outfit-display/outfit-display';
 
 import {HttpModule} from "@angular/http";
 import { DataServiceProvider } from '../providers/data-service/data-service';
@@ -17,7 +18,8 @@ import {AngularFirestoreModule} from "angularfire2/firestore";
 @NgModule({
   declarations: [
     MyApp,
-    HomePage
+    HomePage,
+    OutfitDisplayPage
   ],
   imports: [
     HttpModule,
@@ -29,7 +31,8 @@ import {AngularFirestoreModule} from "angularfire2/firestore";
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
+    HomePage,
+    OutfitDisplayPage
   ],
   providers: [
     StatusBar,
