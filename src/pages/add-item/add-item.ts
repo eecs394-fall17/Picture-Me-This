@@ -29,31 +29,44 @@ export class AddItemPage {
               public isp: ImageServiceProvider,
               public navParams: NavParams) {
     this.garment = new Garment();
+
+    // this prefix is needed for the img tag to display it properly in add-item.html
     this.base64Prefix = "data:image/jpeg;base64,";
   }
 
   saveClothing() {
     // TODO don't continue if a field is missing.
     this.garment.color = this.garment.color.toLowerCase();
-    console.log(this.base64Image);
+
+    // get a reference to a location in storage:
     const ref = firebase.storage().ref('Users/hello/' + this.garment.type + "s" + '/' + this.garment.name.replace(" ","") + '.jpg');
-    console.log(ref);
+
+    // store the image at that reference
     ref.putString(this.base64Image, 'base64', { contentType: 'image/jpg' }).then(snapshot => {
+      // get the URL for the image and save it to garment.
       this.garment.imageURL = snapshot.downloadURL;
-      console.log(this.garment.imageURL);
+
+      // save the garment!
       this.dsp.addClothing(this.garment.type + "s", this.garment);
     }, err => {
       console.log(err);
     });
 
-
+    // pop back to the home page.
     this.navCtrl.pop();
   }
 
   takePicture(){
+    // take a picture!
     this.camera.getPicture(this.isp.cameraOptions).then((imageData) => {
       // imageData is a base64 encoded string
+
+      // base64Image will store the raw image as base64.
       this.base64Image = imageData;
+
+      // base64Prefix stores the raw image as well, but with a prefix beforehand (see constructor).
+      // TODO probably better not to store giant image string twice...
+      // TODO maybe just prepend prefix in a function before sending to html.
       this.base64Prefix += imageData;
     }, (err) => {
       console.log(err);

@@ -4,10 +4,9 @@ import 'rxjs/add/operator/map';
 import {Camera} from "@ionic-native/camera";
 
 /*
-  Generated class for the ImageServiceProvider provider.
-
-  See https://angular.io/guide/dependency-injection for more info on providers
-  and Angular DI.
+  Provider to manage Camera and Image stuff.
+  Might have been overkill to make an entire Provider for it.
+  Right now all this does is store cameraOptions to be used when taking pictures.
 */
 @Injectable()
 export class ImageServiceProvider {

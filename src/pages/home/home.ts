@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import {AlertController, NavController} from 'ionic-angular';
 import 'firebase/firestore';
 import {DataServiceProvider} from "../../providers/data-service/data-service";
-import {Garment} from "../../models/garment";
 import {OutfitDisplayPage} from '../outfit-display/outfit-display';
 import {AddItemPage} from "../add-item/add-item";
 
