@@ -29,7 +29,8 @@ export class HomePage {
     this.navCtrl.push(OutfitDisplayPage, {
       name: garment.name,
       type: garment.type,
-      color: garment.color
+      color: garment.color,
+      imageURL: garment.imageURL
     });
   }
   addGarment() {

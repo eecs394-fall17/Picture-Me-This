@@ -32,6 +32,7 @@ export class OutfitDisplayPage {
     this.garment.name = navParams.get('name');
     this.garment.type = navParams.get('type');
     this.garment.color = navParams.get('color');
+    this.garment.imageURL = navParams.get('imageURL');
 
     this.top = new Garment();
     this.bottom = new Garment();

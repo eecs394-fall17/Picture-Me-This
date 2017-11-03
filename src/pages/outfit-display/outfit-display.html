@@ -14,10 +14,16 @@
 
 
 <ion-content padding>
-  <h1>Top: {{ this.top.name }}</h1><br>
-  <h1>Bottom: {{ this.bottom.name }}</h1><br>
-  <h1>Shoes: {{ this.shoe.name }}</h1><br>
-  <!-- <h1>Top: {{ this.outfit.top }}</h1><br>
-  <h1>Bottom: {{ this.outfit.bottom}}</h1><br>
-  <h1>Shoes: {{ this.oufit.shoe }}</h1><br> -->
+  <ion-item>
+    <h1>Top: {{ this.top.name }}</h1>
+    <img src={{this.top.imageURL}} />
+  </ion-item>
+  <ion-item>
+    <h1>Bottom: {{ this.bottom.name }}</h1>
+    <img src={{this.bottom.imageURL}} />
+  </ion-item>
+  <ion-item>
+    <h1>Shoes: {{ this.shoe.name }}</h1>
+    <img src={{this.shoe.imageURL}} />
+  </ion-item>
 </ion-content>
