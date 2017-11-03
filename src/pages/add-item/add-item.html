@@ -18,8 +18,8 @@
   <div class="content">
     <div>
       <ion-item>
-        <ion-label color="primary" floating>Clothing Name</ion-label>
-        <ion-input [(ngModel)]="garment.name"></ion-input>
+        <ion-label color="primary" stacked>Clothing Name</ion-label>
+        <ion-input [(ngModel)]="garment.name" placeholder="ex: My Favorite Shirt"></ion-input>
       </ion-item>
 
       <ion-item>
@@ -43,9 +43,32 @@
       </ion-list>
 
       <ion-item>
-        <ion-label color="primary" floating>Color</ion-label>
-        <ion-input [(ngModel)]="garment.color"></ion-input>
+        <ion-label color="primary" stacked>Color</ion-label>
+        <ion-select [(ngModel)]="garment.color" placeholder="Choose Color">
+            <ion-option value="beige">Beige</ion-option>
+            <ion-option value="black">Black</ion-option>
+            <ion-option value="brown">Brown</ion-option>
+            <ion-option value="dark blue">Dark Blue</ion-option>
+            <ion-option value="green">Green</ion-option>
+            <ion-option value="grey">Grey</ion-option>
+            <ion-option value="light blue">Light Blue</ion-option>
+            <ion-option value="orange">Orange</ion-option>
+            <ion-option value="pink">Pink</ion-option>
+            <ion-option value="purple">Purple</ion-option>
+            <ion-option value="red">Red</ion-option>
+            <ion-option value="white">White</ion-option>
+            <ion-option value="yellow">Yellow</ion-option>
+        </ion-select>
       </ion-item>
+
+        <ion-item>
+            <ion-label color="primary" stacked>Style</ion-label>
+            <ion-select [(ngModel)]="garment.style" placeholder="Choose Style">
+                <ion-option value="Casual">Casual</ion-option>
+                <ion-option value="Formal">Formal</ion-option>
+                <ion-option value="Informal">Informal</ion-option>
+            </ion-select>
+        </ion-item>
       <!--<ion-list *ngIf="acDestinations.length > 0" style="position: absolute; z-index: 1000">-->
         <!--<ion-item *ngFor="let item of acDestinations" (click)="selectDestination(item)">-->
           <!--{{ item.description }}-->
