@@ -22,6 +22,11 @@
         <ion-input [(ngModel)]="garment.name"></ion-input>
       </ion-item>
 
+      <ion-item>
+        <img [src]="base64Image" *ngIf="base64Image" />
+        <button ion-button (click)="takePicture()">Take Picture</button>
+      </ion-item>
+
       <ion-list radio-group [(ngModel)]="garment.type" floating>
         <ion-item>
           <ion-label>Top</ion-label>

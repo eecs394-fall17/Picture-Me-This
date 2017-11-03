@@ -3,6 +3,7 @@ export class Garment {
   type: string; // Top, Bottom, or Shoe
   style: string;
   color: string;
+  imageURL: string;
 
   constructor() {
   }

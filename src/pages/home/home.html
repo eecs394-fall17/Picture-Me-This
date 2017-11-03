@@ -15,7 +15,7 @@
       <ion-item-divider>
           Tops
       </ion-item-divider>
-    <ion-item *ngFor="let garment of garments | async">
+    <ion-item *ngFor="let garment of garmentsT | async">
       <h1>{{garment.name}}</h1>
       <p>Type: {{garment.type}}</p>
       <p>Color: {{garment.color}}</p>

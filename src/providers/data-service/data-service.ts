@@ -82,7 +82,8 @@ export class DataServiceProvider {
     this.db.collection("Users").doc(this.uid).collection(type).doc(garment.name).set({
       name: garment.name,
       type: garment.type,
-      color: garment.color
+      color: garment.color,
+      imageURL: garment.imageURL
     });
   }
 

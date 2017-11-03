@@ -5,7 +5,9 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/home/home';
 import * as firebase from "firebase";
-import {FIREBASE_CONFIG} from "./app.firebase.config";
+import { Environment } from "./app.environment.config";
+
+
 @Component({
   templateUrl: 'app.html'
 })
@@ -20,7 +22,7 @@ export class MyApp {
       splashScreen.hide();
     });
 
-    firebase.initializeApp(FIREBASE_CONFIG);
+    firebase.initializeApp(Environment.firebaseConfig);
     firebase.firestore();
   }
 }

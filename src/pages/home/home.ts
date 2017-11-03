@@ -11,7 +11,7 @@ import {AddItemPage} from "../add-item/add-item";
   templateUrl: 'home.html'
 })
 export class HomePage {
-  garments;
+  garmentsT;
   garmentsB;
   garmentsS;
   constructor(public navCtrl: NavController,
@@ -19,11 +19,11 @@ export class HomePage {
               public dsp: DataServiceProvider) {
     // TODO user key needs to be streamlined, whenever we decide to develop auth.
     // TODO database calls need to be streamlined by creating functions in DataServiceProvider.
-      this.garments = this.dsp.afs.collection("Users").doc("hello").collection("Tops").valueChanges();
+      this.garmentsT = this.dsp.afs.collection("Users").doc("hello").collection("Tops").valueChanges();
       this.garmentsB = this.dsp.afs.collection("Users").doc("hello").collection("Bottoms").valueChanges();
 
       this.garmentsS = this.dsp.afs.collection("Users").doc("hello").collection("Shoes").valueChanges();
-    console.log(this.garments);
+    console.log(this.garmentsT);
   }
 
   pushDisplayOutfit(garment){

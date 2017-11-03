@@ -6,14 +6,16 @@ import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
+import { AddItemPage } from '../pages/add-item/add-item';
 import { OutfitDisplayPage} from '../pages/outfit-display/outfit-display';
 
-import {HttpModule} from "@angular/http";
+import { HttpModule } from '@angular/http';
 import { DataServiceProvider } from '../providers/data-service/data-service';
-import {AngularFireModule} from "angularfire2";
-import {FIREBASE_CONFIG} from "./app.firebase.config";
-import {AngularFirestoreModule} from "angularfire2/firestore";
-import {AddItemPage} from "../pages/add-item/add-item";
+import { AngularFireModule } from 'angularfire2';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { Camera } from '@ionic-native/camera';
+import { Environment } from './app.environment.config';
+import { ImageServiceProvider } from '../providers/image-service/image-service';
 
 
 @NgModule({
@@ -27,7 +29,7 @@ import {AddItemPage} from "../pages/add-item/add-item";
     HttpModule,
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    AngularFireModule.initializeApp(FIREBASE_CONFIG),
+    AngularFireModule.initializeApp(Environment.firebaseConfig),
     AngularFirestoreModule.enablePersistence()
   ],
   bootstrap: [IonicApp],
@@ -40,8 +42,10 @@ import {AddItemPage} from "../pages/add-item/add-item";
   providers: [
     StatusBar,
     SplashScreen,
+    Camera,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    DataServiceProvider
+    DataServiceProvider,
+    ImageServiceProvider
   ]
 })
 export class AppModule {}
