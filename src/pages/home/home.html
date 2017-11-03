@@ -15,12 +15,29 @@
       <ion-item-divider>
           Tops
       </ion-item-divider>
+    <!--
+    We have three different sections that do virtually the same thing.
+    Is there a way to not have this duplicated code?
+    -->
     <ion-item *ngFor="let garmentTop of garmentsT | async">
       <h1>{{garmentTop.name}}</h1>
       <img src={{garmentTop.imageURL}}/>
-      <p>Type: {{garmentTop.type}}</p>
-      <p>Color: {{garmentTop.color}}</p>
-      <button ion-button (click)="pushDisplayOutfit(garmentTop)">Make Outfit</button>
+
+      <ion-row>
+        <ion-col>
+          <p>Type: {{garmentTop.type}}</p>
+        </ion-col>
+        <ion-col>
+          <p>Color: {{garmentTop.color}}</p>
+        </ion-col>
+        <ion-col col-2>
+          <button ion-button (click)="removeGarment(garmentTop)" clear icon-start>
+            <ion-icon name='trash'></ion-icon>
+          </button>
+        </ion-col>
+      </ion-row>
+      <button ion-button full large (click)="pushDisplayOutfit(garmentTop)">Make Outfit</button>
+
     </ion-item>
       <ion-item-divider>
           Bottoms
@@ -28,9 +45,21 @@
       <ion-item *ngFor="let garmentBottom of garmentsB | async">
         <h1>{{garmentBottom.name}}</h1>
         <img src={{garmentBottom.imageURL}}/>
-        <p>Type: {{garmentBottom.type}}</p>
-        <p>Color: {{garmentBottom.color}}</p>
-        <button ion-button (click)="pushDisplayOutfit(garmentBottom)">Make Outfit</button>
+
+        <ion-row>
+          <ion-col>
+            <p>Type: {{garmentBottom.type}}</p>
+          </ion-col>
+          <ion-col>
+            <p>Color: {{garmentBottom.color}}</p>
+          </ion-col>
+          <ion-col col-2>
+            <button ion-button (click)="removeGarment(garmentBottom)" clear icon-start>
+              <ion-icon name='trash'></ion-icon>
+            </button>
+          </ion-col>
+        </ion-row>
+        <button ion-button full large (click)="pushDisplayOutfit(garmentBottom)">Make Outfit</button>
       </ion-item>
       <ion-item-divider>
           Shoes
@@ -38,9 +67,21 @@
       <ion-item *ngFor="let garmentShoe of garmentsS | async">
         <h1>{{garmentShoe.name}}</h1>
         <img src={{garmentShoe.imageURL}}/>
-        <p>Type: {{garmentShoe.type}}</p>
-        <p>Color: {{garmentShoe.color}}</p>
-        <button ion-button (click)="pushDisplayOutfit(garmentShoe)">Make Outfit</button>
+
+        <ion-row>
+          <ion-col>
+            <p>Type: {{garmentShoe.type}}</p>
+          </ion-col>
+          <ion-col>
+            <p>Color: {{garmentShoe.color}}</p>
+          </ion-col>
+          <ion-col col-2>
+            <button ion-button (click)="removeGarment(garmentShoe)" clear icon-start>
+              <ion-icon name='trash'></ion-icon>
+            </button>
+          </ion-col>
+        </ion-row>
+        <button ion-button full large (click)="pushDisplayOutfit(garmentShoe)">Make Outfit</button>
       </ion-item>
 
   </ion-list>

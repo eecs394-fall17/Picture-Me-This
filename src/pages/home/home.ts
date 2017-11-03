@@ -37,4 +37,23 @@ export class HomePage {
     this.navCtrl.push(AddItemPage);
   }
 
+  removeGarment(garment) {
+    this.alertCtrl.create({
+      title: "Delete Post",
+      message: "Are you sure you want to delete this post? This action cannot be undone.",
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel'
+        },
+        {
+          text: 'Delete',
+          handler: () => {
+            this.dsp.removeClothing(garment);
+          }
+        }
+      ]
+    }).present();
+  }
+
 }

@@ -87,4 +87,13 @@ export class DataServiceProvider {
     });
   }
 
+  removeClothing(garment: Garment) {
+    // delete image from storage
+    const storage_ref = firebase.storage().ref('Users/' + this.uid + '/' + garment.type + "s" + '/' + garment.name.replace(" ","") + '.jpg');
+    storage_ref.delete();
+
+    // delete entry from database
+    this.db.collection("Users").doc(this.uid).collection(garment.type + 's').doc(garment.name).delete();
+  }
+
 }
