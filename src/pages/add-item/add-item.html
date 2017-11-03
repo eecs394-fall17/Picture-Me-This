@@ -24,7 +24,7 @@
 
       <ion-item>
         <img [src]="base64Prefix" *ngIf="base64Image" />
-        <button ion-button (click)="takePicture()">Take Picture</button>
+        <button id="take" ion-button (click)="takePicture()" block >Take Picture</button>
       </ion-item>
 
       <ion-list radio-group [(ngModel)]="garment.type" floating>

@@ -56,7 +56,8 @@ export class AddItemPage {
     this.navCtrl.pop();
   }
 
-  takePicture(){
+  takePicture() {
+
     // take a picture!
     this.camera.getPicture(this.isp.cameraOptions).then((imageData) => {
       // imageData is a base64 encoded string
@@ -68,6 +69,9 @@ export class AddItemPage {
       // TODO probably better not to store giant image string twice...
       // TODO maybe just prepend prefix in a function before sending to html.
       this.base64Prefix += imageData;
+
+      var button = document.getElementById("take");
+      button.style.display = "none";
     }, (err) => {
       console.log(err);
     });
