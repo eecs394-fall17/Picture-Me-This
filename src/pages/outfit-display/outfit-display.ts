@@ -2,10 +2,6 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {Garment} from "../../models/garment";
 import {Outfit} from "../../models/outfit";
-<<<<<<< HEAD
-
-=======
->>>>>>> origin/master
 import {DataServiceProvider} from "../../providers/data-service/data-service";
 /**
  * Generated class for the OutfitDisplayPage page.
