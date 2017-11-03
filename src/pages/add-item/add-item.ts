@@ -54,6 +54,7 @@ export class AddItemPage {
     this.camera.getPicture(this.isp.cameraOptions).then((imageData) => {
       // imageData is a base64 encoded string
       this.base64Image = imageData;
+      this.base64Prefix += imageData;
     }, (err) => {
       console.log(err);
     });

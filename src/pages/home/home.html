@@ -17,7 +17,7 @@
       </ion-item-divider>
     <ion-item *ngFor="let garmentTop of garmentsT | async">
       <h1>{{garmentTop.name}}</h1>
-      <ion-img width="80" height="80" src={{garmentTop.imageURL}}></ion-img>
+      <img src={{garmentTop.imageURL}}/>
       <p>Type: {{garmentTop.type}}</p>
       <p>Color: {{garmentTop.color}}</p>
       <button ion-button (click)="pushDisplayOutfit(garmentTop)">Make Outfit</button>
@@ -27,7 +27,7 @@
       </ion-item-divider>
       <ion-item *ngFor="let garmentBottom of garmentsB | async">
         <h1>{{garmentBottom.name}}</h1>
-        <ion-img width="80" height="80" src={{garmentBottom.imageURL}}></ion-img>
+        <img src={{garmentBottom.imageURL}}/>
         <p>Type: {{garmentBottom.type}}</p>
         <p>Color: {{garmentBottom.color}}</p>
         <button ion-button (click)="pushDisplayOutfit(garmentBottom)">Make Outfit</button>
@@ -37,7 +37,7 @@
       </ion-item-divider>
       <ion-item *ngFor="let garmentShoe of garmentsS | async">
         <h1>{{garmentShoe.name}}</h1>
-        <ion-img width="80" height="80" src={{garmentShoe.imageURL}}></ion-img>
+        <img src={{garmentShoe.imageURL}}/>
         <p>Type: {{garmentShoe.type}}</p>
         <p>Color: {{garmentShoe.color}}</p>
         <button ion-button (click)="pushDisplayOutfit(garmentShoe)">Make Outfit</button>
