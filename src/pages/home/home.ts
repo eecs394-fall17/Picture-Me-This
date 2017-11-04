@@ -39,8 +39,8 @@ export class HomePage {
 
   removeGarment(garment) {
     this.alertCtrl.create({
-      title: "Delete Post",
-      message: "Are you sure you want to delete this post? This action cannot be undone.",
+      title: "Delete Clothing",
+      message: "Are you sure you want to delete? This action cannot be undone.",
       buttons: [
         {
           text: 'Cancel',
