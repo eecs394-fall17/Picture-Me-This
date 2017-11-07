@@ -17,6 +17,8 @@ import { Camera } from '@ionic-native/camera';
 import { Environment } from './app.environment.config';
 import { ImageServiceProvider } from '../providers/image-service/image-service';
 
+import { MasonryModule } from 'angular2-masonry';
+
 
 @NgModule({
   declarations: [
@@ -30,7 +32,8 @@ import { ImageServiceProvider } from '../providers/image-service/image-service';
     BrowserModule,
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(Environment.firebaseConfig),
-    AngularFirestoreModule.enablePersistence()
+    AngularFirestoreModule.enablePersistence(),
+    MasonryModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

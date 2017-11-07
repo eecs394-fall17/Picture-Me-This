@@ -7,15 +7,15 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>OutfitDisplay</ion-title>
+    <ion-title>Outfit</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-  <ion-item>
-    <h1>Top: {{ this.top.name }}</h1>
+  <!-- <ion-item> -->
+    <!-- <h1>Top: {{ this.top.name }}</h1>
     <img src={{this.top.imageURL}} />
   </ion-item>
   <ion-item>
@@ -25,5 +25,59 @@
   <ion-item>
     <h1>Shoes: {{ this.shoe.name }}</h1>
     <img src={{this.shoe.imageURL}} />
-  </ion-item>
+  </ion-item> -->
+  <!-- <ion-slides>
+    <ion-slide>
+      <label>Top:</label>
+      <h1> {{ this.top.name }}</h1>
+      <img src={{this.top.imageURL}} />
+    </ion-slide>
+    <ion-slide>
+      <h1>Bottom: {{ this.bottom.name }}</h1>
+      <img src={{this.bottom.imageURL}} />
+    </ion-slide>
+    <ion-slide>
+      <h1>Shoes: {{ this.shoe.name }}</h1>
+      <img src={{this.shoe.imageURL}} />
+    </ion-slide>
+  </ion-slides> -->
+  <!-- <masonry>
+    <masonry-brick class="brick">
+      <h1>Top: {{ this.top.name }}</h1>
+      <img src={{this.top.imageURL}} />
+    </masonry-brick>
+    <masonry-brick class="brick">
+      <h1>Bottom: {{ this.bottom.name }}</h1>
+      <img src={{this.bottom.imageURL}} />
+    </masonry-brick>
+    <masonry-brick class="brick">
+      <h1>Shoes: {{ this.shoe.name }}</h1>
+      <img src={{this.shoe.imageURL}} />
+    </masonry-brick>
+  </masonry> -->
+  <ion-grid>
+    <ion-row>
+      <ion-col col-auto>
+        <ion-item>
+          <p>Top: {{ this.top.name }}</p>
+          <ion-img width="80" height="100" src={{this.top.imageURL}}></ion-img>
+        </ion-item>
+      </ion-col>
+      <ion-col col-auto>
+        <ion-item>
+          <p>Bottom: {{ this.bottom.name }}</p>
+          <ion-img width="80" height="100" src={{this.bottom.imageURL}}></ion-img>
+        </ion-item>
+      </ion-col>
+      <ion-col col-auto>
+        <ion-item>
+          <p>Shoes: {{ this.shoe.name }}</p>
+          <ion-img width="80" height="100" src={{this.shoe.imageURL}}></ion-img>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+
+    </ion-row>
+  </ion-grid>
 </ion-content>

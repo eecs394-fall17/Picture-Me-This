@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {Garment} from "../../models/garment";
 import {Outfit} from "../../models/outfit";
 import {DataServiceProvider} from "../../providers/data-service/data-service";
+import { MasonryModule } from 'angular2-masonry';
 /**
  * Generated class for the OutfitDisplayPage page.
  *
@@ -25,7 +26,8 @@ export class OutfitDisplayPage {
 
   constructor(public navCtrl: NavController,
               public dsp: DataServiceProvider,
-              public navParams: NavParams) {
+              public navParams: NavParams,
+              public masonryModule: MasonryModule) {
 
 
     this.garment = new Garment();
