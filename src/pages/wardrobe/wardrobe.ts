@@ -33,9 +33,6 @@ export class WardrobePage {
       imageURL: garment.imageURL
     });
   }
-  addGarment() {
-    this.navCtrl.push(AddItemPage);
-  }
 
   removeGarment(garment) {
     this.alertCtrl.create({

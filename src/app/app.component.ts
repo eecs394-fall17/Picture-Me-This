@@ -6,6 +6,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import {HomePage} from "../pages/home/home";
 import * as firebase from "firebase";
 import { Environment } from "./app.environment.config";
+import {AddItemPage} from "../pages/add-item/add-item";
+import {WardrobePage} from "../pages/wardrobe/wardrobe";
 
 
 @Component({
@@ -13,6 +15,10 @@ import { Environment } from "./app.environment.config";
 })
 export class MyApp {
   rootPage:any = HomePage;
+
+  homePage = HomePage;
+  addItemPage = AddItemPage;
+  wardrobePage = WardrobePage;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     platform.ready().then(() => {

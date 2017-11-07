@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import {WardrobePage} from "../wardrobe/wardrobe";
-import {AddItemPage} from "../add-item/add-item";
 
 /**
  * Generated class for the HomePage page.
@@ -18,14 +16,6 @@ import {AddItemPage} from "../add-item/add-item";
 export class HomePage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
-
-  goToWardrobe() {
-    this.navCtrl.push(WardrobePage);
-  }
-
-  goToAddItem() {
-    this.navCtrl.push(AddItemPage);
   }
 
 }
