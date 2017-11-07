@@ -5,7 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
-import { HomePage } from '../pages/home/home';
+import { WardrobePage } from '../pages/wardrobe/wardrobe';
 import { AddItemPage } from '../pages/add-item/add-item';
 import { OutfitDisplayPage} from '../pages/outfit-display/outfit-display';
 
@@ -21,7 +21,7 @@ import { ImageServiceProvider } from '../providers/image-service/image-service';
 @NgModule({
   declarations: [
     MyApp,
-    HomePage,
+    WardrobePage,
     OutfitDisplayPage,
     AddItemPage
   ],
@@ -35,7 +35,7 @@ import { ImageServiceProvider } from '../providers/image-service/image-service';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage,
+    WardrobePage,
     OutfitDisplayPage,
     AddItemPage
   ],

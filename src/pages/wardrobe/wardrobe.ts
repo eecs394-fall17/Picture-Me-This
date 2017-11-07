@@ -6,10 +6,10 @@ import {OutfitDisplayPage} from '../outfit-display/outfit-display';
 import {AddItemPage} from "../add-item/add-item";
 
 @Component({
-  selector: 'page-home',
-  templateUrl: 'home.html'
+  selector: 'page-wardrobe',
+  templateUrl: 'wardrobe.html'
 })
-export class HomePage {
+export class WardrobePage {
   garmentsT;
   garmentsB;
   garmentsS;
