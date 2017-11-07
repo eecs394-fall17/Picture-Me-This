@@ -56,6 +56,7 @@ export class OutfitDisplayPage {
   }
 
   setMatchingTop() {
+    // TODO change to not be random
     this.dsp.getTops().get().then(snapshot => {
       let count = snapshot.docs.length;
       this.top = snapshot.docs[Math.floor(Math.random() * count)].data();
@@ -63,6 +64,7 @@ export class OutfitDisplayPage {
   }
 
   setMatchingBottom() {
+    // TODO change to not be random
     this.dsp.getBottoms().get().then(snapshot => {
       let count = snapshot.docs.length;
       this.bottom = snapshot.docs[Math.floor(Math.random() * count)].data();
@@ -70,6 +72,7 @@ export class OutfitDisplayPage {
   }
 
   setMatchingShoe() {
+    // TODO change to not be random
     this.dsp.getShoes().get().then(snapshot => {
       let count = snapshot.docs.length;
       this.shoe = snapshot.docs[Math.floor(Math.random() * count)].data();
