@@ -16,11 +16,13 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { Camera } from '@ionic-native/camera';
 import { Environment } from './app.environment.config';
 import { ImageServiceProvider } from '../providers/image-service/image-service';
+import {HomePage} from "../pages/home/home";
 
 
 @NgModule({
   declarations: [
     MyApp,
+    HomePage,
     WardrobePage,
     OutfitDisplayPage,
     AddItemPage
@@ -35,6 +37,7 @@ import { ImageServiceProvider } from '../providers/image-service/image-service';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
+    HomePage,
     WardrobePage,
     OutfitDisplayPage,
     AddItemPage
