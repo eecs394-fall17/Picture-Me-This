@@ -4,7 +4,7 @@ import {Garment} from "../../models/garment";
 import {Outfit} from "../../models/outfit";
 import {DataServiceProvider} from "../../providers/data-service/data-service";
 import {MatchServiceProvider} from "../../providers/match-service/match-service";
-import {Queue} from 'typescript-collections/dist/lib';
+import {Queue, LinkedList} from 'typescript-collections/dist/lib';
 
 /**
  * Generated class for the OutfitDisplayPage page.
@@ -25,6 +25,12 @@ export class OutfitDisplayPage {
   bottom: Garment;
   shoe: Garment;
   outfit: Outfit;
+  // tops: LinkedList<Garment>;
+  // bottoms: LinkedList<Garment>;
+  // shoes: LinkedList<Garment>;
+  tIndex: number;
+  bIndex: number;
+  sIndex: number;
 
   matchingColors;
 
@@ -46,21 +52,28 @@ export class OutfitDisplayPage {
     this.top = new Garment();
     this.bottom = new Garment();
     this.shoe = new Garment();
+    // this.tops = new LinkedList<Garment>();
+    // this.bottoms = new LinkedList<Garment>();
+    // this.shoes = new LinkedList<Garment>();
+    this.tIndex = 0;
+    this.bIndex = 0;
+    this.sIndex = 0;
 
     if (this.garment.type == "Top") {
-      this.top = this.garment;
-      this.setMatchingBottom();
-      this.setMatchingShoe();
+        this.top = this.garment;
+        //this.topMatches.enqueue(this.garment.name);
+        this.setMatchingBottom();
+        this.setMatchingShoe();
     }
     else if (this.garment.type == "Bottom") {
-      this.bottom = this.garment;
-      this.setMatchingTop();
-      this.setMatchingShoe();
+        this.bottom = this.garment;
+        this.setMatchingTop();
+        this.setMatchingShoe();
     }
     else{
-      this.shoe = this.garment;
-      this.setMatchingTop();
-      this.setMatchingBottom();
+        this.shoe = this.garment;
+        this.setMatchingTop();
+        this.setMatchingBottom();
     }
   }
 
@@ -117,6 +130,51 @@ export class OutfitDisplayPage {
       this.shoe = matchingGarments[Math.floor(Math.random() * count)].data();
     });
   }
+
+  // changeTop() {
+  //     if (!this.tops.isEmpty()) {
+  //         this.tIndex++;
+  //         if (this.tIndex >= this.tops.size()) {
+  //             this.tIndex = 0;
+  //             this.top = this.tops.elementAtIndex(this.tIndex);
+  //         }
+  //         else
+  //             this.top = this.tops.elementAtIndex(this.tIndex);
+  //     }
+  //     else {
+  //         console.log("top broke");
+  //     }
+  // }
+  //
+  // changeBottom() {
+  //     if (!this.bottoms.isEmpty()) {
+  //         this.bIndex++;
+  //         if (this.bIndex >= this.bottoms.size()) {
+  //             this.bIndex = 0;
+  //             this.bottom = this.bottoms.elementAtIndex(this.bIndex);
+  //         }
+  //         else
+  //           this.bottom = this.bottoms.elementAtIndex(this.bIndex);
+  //     }
+  //     else {
+  //         console.log("bottom broke");
+  //     }
+  // }
+  // changeShoe() {
+  //     if (!this.shoes.isEmpty()) {
+  //         this.sIndex++;
+  //         if (this.sIndex >= this.shoes.size())
+  //         {
+  //             this.sIndex = 0;
+  //             this.shoe = this.shoes.elementAtIndex(this.sIndex);
+  //         }
+  //         else
+  //             this.shoe = this.shoes.elementAtIndex(this.sIndex);
+  //     }
+  //     else {
+  //         console.log("shoe broke");
+  //     }
+  // }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad OutfitDisplayPage');
