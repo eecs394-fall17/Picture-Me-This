@@ -3,7 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {Garment} from "../../models/garment";
 import {Outfit} from "../../models/outfit";
 import {DataServiceProvider} from "../../providers/data-service/data-service";
-//import { Collections } from 'typescript-collections';
+import {MatchServiceProvider} from "../../providers/match-service/match-service";
 import {Queue} from 'typescript-collections/dist/lib';
 
 /**
@@ -26,9 +26,12 @@ export class OutfitDisplayPage {
   shoe: Garment;
   outfit: Outfit;
 
+  matchingColors;
+
   constructor(public navCtrl: NavController,
+              public navParams: NavParams,
               public dsp: DataServiceProvider,
-              public navParams: NavParams) {
+              public msp: MatchServiceProvider) {
 
 
     this.garment = new Garment();
@@ -36,6 +39,9 @@ export class OutfitDisplayPage {
     this.garment.type = navParams.get('type');
     this.garment.color = navParams.get('color');
     this.garment.imageURL = navParams.get('imageURL');
+
+    this.matchingColors = msp.getMatchingColors(this.garment.color);
+    console.log(this.matchingColors);
 
     this.top = new Garment();
     this.bottom = new Garment();
@@ -58,44 +64,58 @@ export class OutfitDisplayPage {
     }
   }
 
+  // TODO fix duplicated code
+  // TODO how to pick when there are multiple matching garments?
+
   setMatchingTop() {
-      // TODO change to not be random
-      let q = new Queue<string>();
-      let ref = this.dsp.getTops();
-      ref.get().then(snapshot => {
-          snapshot.forEach(function (doc) {
-              q.enqueue(doc.id);
-          })
-          let count = snapshot.docs.length;
-          this.top = snapshot.docs[Math.floor(Math.random() * count)].data();
-          
-      })      
+    let matchingGarments = [];
+    let matchingColors = this.matchingColors;
+    let ref = this.dsp.getTops();
+
+    ref.get().then(snapshot => {
+      snapshot.forEach(function (doc) {
+        if (matchingColors.indexOf(doc.data().color) > -1) {
+          matchingGarments.push(doc);
+        }
+      });
+
+      let count = matchingGarments.length;
+      this.top = matchingGarments[Math.floor(Math.random() * count)].data();
+    })
   }
 
   setMatchingBottom() {
-      // TODO change to not be random
-      let q = new Queue<string>();
-      let ref = this.dsp.getBottoms();
-      ref.get().then(snapshot => {
-          let count = snapshot.docs.length;
-          this.bottom = snapshot.docs[Math.floor(Math.random() * count)].data();
-          snapshot.forEach(function (doc) {
-              q.enqueue(doc.id);
-          })
-      })
+    let matchingGarments = [];
+    let matchingColors = this.matchingColors;
+    let ref = this.dsp.getBottoms();
+
+    ref.get().then(snapshot => {
+      snapshot.forEach(function (doc) {
+        if (matchingColors.indexOf(doc.data().color) > -1) {
+          matchingGarments.push(doc);
+        }
+      });
+
+      let count = matchingGarments.length;
+      this.bottom = matchingGarments[Math.floor(Math.random() * count)].data();
+    });
   }
 
   setMatchingShoe() {
-      // TODO change to not be random
-      let q = new Queue<string>();
-      let ref = this.dsp.getShoes();
-      ref.get().then(snapshot => {
-          snapshot.forEach(function (doc) {
-              q.enqueue(doc.id);
-          })
-          let count = snapshot.docs.length;
-          this.shoe = snapshot.docs[Math.floor(Math.random() * count)].data();
-    })
+    let matchingGarments = [];
+    let matchingColors = this.matchingColors;
+    let ref = this.dsp.getShoes();
+
+    ref.get().then(snapshot => {
+      snapshot.forEach(function (doc) {
+        if (matchingColors.indexOf(doc.data().color) > -1) {
+          matchingGarments.push(doc);
+        }
+      });
+
+      let count = matchingGarments.length;
+      this.shoe = matchingGarments[Math.floor(Math.random() * count)].data();
+    });
   }
 
   ionViewDidLoad() {
