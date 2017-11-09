@@ -17,6 +17,7 @@ import { Camera } from '@ionic-native/camera';
 import { Environment } from './app.environment.config';
 import { ImageServiceProvider } from '../providers/image-service/image-service';
 import {HomePage} from "../pages/home/home";
+import { MatchServiceProvider } from '../providers/match-service/match-service';
 
 
 @NgModule({
@@ -48,7 +49,8 @@ import {HomePage} from "../pages/home/home";
     Camera,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     DataServiceProvider,
-    ImageServiceProvider
+    ImageServiceProvider,
+    MatchServiceProvider
   ]
 })
 export class AppModule {}
