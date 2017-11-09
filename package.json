@@ -43,6 +43,8 @@
     "promise-polyfill": "^6.0.2",
     "rxjs": "5.4.3",
     "sw-toolbox": "3.6.0",
+    "typescript-collections": "^1.2.5",
+    "typescript.list": "^6.7.0",
     "zone.js": "0.8.18"
   },
   "devDependencies": {

@@ -3,6 +3,9 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {Garment} from "../../models/garment";
 import {Outfit} from "../../models/outfit";
 import {DataServiceProvider} from "../../providers/data-service/data-service";
+//import { Collections } from 'typescript-collections';
+import {Queue} from 'typescript-collections/dist/lib';
+
 /**
  * Generated class for the OutfitDisplayPage page.
  *
@@ -56,26 +59,42 @@ export class OutfitDisplayPage {
   }
 
   setMatchingTop() {
-    // TODO change to not be random
-    this.dsp.getTops().get().then(snapshot => {
-      let count = snapshot.docs.length;
-      this.top = snapshot.docs[Math.floor(Math.random() * count)].data();
-    })
+      // TODO change to not be random
+      let q = new Queue<string>();
+      let ref = this.dsp.getTops();
+      ref.get().then(snapshot => {
+          snapshot.forEach(function (doc) {
+              q.enqueue(doc.id);
+          })
+          let count = snapshot.docs.length;
+          this.top = snapshot.docs[Math.floor(Math.random() * count)].data();
+          
+      })      
   }
 
   setMatchingBottom() {
-    // TODO change to not be random
-    this.dsp.getBottoms().get().then(snapshot => {
-      let count = snapshot.docs.length;
-      this.bottom = snapshot.docs[Math.floor(Math.random() * count)].data();
-    })
+      // TODO change to not be random
+      let q = new Queue<string>();
+      let ref = this.dsp.getBottoms();
+      ref.get().then(snapshot => {
+          let count = snapshot.docs.length;
+          this.bottom = snapshot.docs[Math.floor(Math.random() * count)].data();
+          snapshot.forEach(function (doc) {
+              q.enqueue(doc.id);
+          })
+      })
   }
 
   setMatchingShoe() {
-    // TODO change to not be random
-    this.dsp.getShoes().get().then(snapshot => {
-      let count = snapshot.docs.length;
-      this.shoe = snapshot.docs[Math.floor(Math.random() * count)].data();
+      // TODO change to not be random
+      let q = new Queue<string>();
+      let ref = this.dsp.getShoes();
+      ref.get().then(snapshot => {
+          snapshot.forEach(function (doc) {
+              q.enqueue(doc.id);
+          })
+          let count = snapshot.docs.length;
+          this.shoe = snapshot.docs[Math.floor(Math.random() * count)].data();
     })
   }
 
