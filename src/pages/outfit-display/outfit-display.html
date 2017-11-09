@@ -7,23 +7,27 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>OutfitDisplay</ion-title>
+    <ion-title>
+      <img height="40" src="assets/imgs/logo.png"/>
+    </ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
+  <ion-title>Here's your outfit!</ion-title>
+
   <ion-item>
-    <h1>Top: {{ this.top.name }}</h1>
+    <h2>{{ this.top.name }}</h2>
     <img src={{this.top.imageURL}} />
   </ion-item>
   <ion-item>
-    <h1>Bottom: {{ this.bottom.name }}</h1>
+    <h2>{{ this.bottom.name }}</h2>
     <img src={{this.bottom.imageURL}} />
   </ion-item>
   <ion-item>
-    <h1>Shoes: {{ this.shoe.name }}</h1>
+    <h2>{{ this.shoe.name }}</h2>
     <img src={{this.shoe.imageURL}} />
   </ion-item>
 </ion-content>
