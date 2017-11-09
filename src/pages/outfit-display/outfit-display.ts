@@ -3,7 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {Garment} from "../../models/garment";
 import {Outfit} from "../../models/outfit";
 import {DataServiceProvider} from "../../providers/data-service/data-service";
-import {Queue} from 'typescript-collections/dist/lib';
+import {Queue, LinkedList} from 'typescript-collections/dist/lib';
 
 /**
  * Generated class for the OutfitDisplayPage page.
@@ -24,9 +24,12 @@ export class OutfitDisplayPage {
   bottom: Garment;
   shoe: Garment;
   outfit: Outfit;
-  topMatches: Queue<string>;
-  bottomMatches: Queue<string>;
-  shoeMatches: Queue<string>;
+  tops: LinkedList<Garment>;
+  bottoms: LinkedList<Garment>;
+  shoes: LinkedList<Garment>;
+  tIndex: number;
+  bIndex: number;
+  sIndex: number;
 
   constructor(public navCtrl: NavController,
               public dsp: DataServiceProvider,
@@ -42,25 +45,26 @@ export class OutfitDisplayPage {
     this.top = new Garment();
     this.bottom = new Garment();
     this.shoe = new Garment();
-    this.topMatches = new Queue<string>();
-    this.bottomMatches = new Queue<string>();
-    this.shoeMatches = new Queue<string>();
+    this.tops = new LinkedList<Garment>();
+    this.bottoms = new LinkedList<Garment>();
+    this.shoes = new LinkedList<Garment>();
+    this.tIndex = 0;
+    this.bIndex = 0;
+    this.sIndex = 0;
 
     if (this.garment.type == "Top") {
         this.top = this.garment;
-        this.topMatches.enqueue(this.garment.name);
+        //this.topMatches.enqueue(this.garment.name);
         this.setMatchingBottom();
         this.setMatchingShoe();
     }
     else if (this.garment.type == "Bottom") {
         this.bottom = this.garment;
-        this.bottomMatches.enqueue(this.bottom.name);
         this.setMatchingTop();
         this.setMatchingShoe();
     }
     else{
         this.shoe = this.garment;
-        this.shoeMatches.enqueue(this.shoe.name);
         this.setMatchingTop();
         this.setMatchingBottom();
     }
@@ -68,45 +72,90 @@ export class OutfitDisplayPage {
 
   setMatchingTop() {
       // TODO change to not be random
-      let q = new Queue<string>();
+      let ll = new LinkedList<Garment>();
       let ref = this.dsp.getTops();
       ref.get().then(snapshot => {
           snapshot.forEach(function (doc) {
-              q.enqueue(doc.id);
+              ll.add(doc.data());
           })
-          let count = snapshot.docs.length;
-          this.top = snapshot.docs[Math.floor(Math.random() * count)].data();
-          this.topMatches = q;
-          console.log(this.topMatches.isEmpty());
+          //let count = snapshot.docs.length;
+          //this.top = snapshot.docs[Math.floor(Math.random() * count)].data();
+          this.tops = ll;
+          this.top = this.tops.first();
       })      
   }
 
   setMatchingBottom() {
       // TODO change to not be random
-      let q = new Queue<string>();
+      let ll = new LinkedList<Garment>();
       let ref = this.dsp.getBottoms();
       ref.get().then(snapshot => {
           let count = snapshot.docs.length;
           this.bottom = snapshot.docs[Math.floor(Math.random() * count)].data();
           snapshot.forEach(function (doc) {
-              q.enqueue(doc.id);
+              ll.add(doc.data());
           })
-          this.bottomMatches = q;
+          this.bottoms = ll;
       })
   }
 
   setMatchingShoe() {
       // TODO change to not be random
-      let q = new Queue<string>();
+      let ll = new LinkedList<Garment>();
       let ref = this.dsp.getShoes();
       ref.get().then(snapshot => {
           snapshot.forEach(function (doc) {
-              q.enqueue(doc.id);
+              ll.add(doc.data());
           })
           let count = snapshot.docs.length;
           this.shoe = snapshot.docs[Math.floor(Math.random() * count)].data();
-          this.shoeMatches = q;
+          this.shoes = ll;
     })
+  }
+
+  changeTop() {
+      if (!this.tops.isEmpty()) {
+          this.tIndex++;
+          if (this.tIndex >= this.tops.size()) {
+              this.tIndex = 0;
+              this.top = this.tops.elementAtIndex(this.tIndex);
+          }
+          else
+              this.top = this.tops.elementAtIndex(this.tIndex);
+      }
+      else {
+          console.log("top broke");
+      }
+  }
+
+  changeBottom() {
+      if (!this.bottoms.isEmpty()) {
+          this.bIndex++;
+          if (this.bIndex >= this.bottoms.size()) {
+              this.bIndex = 0;
+              this.bottom = this.bottoms.elementAtIndex(this.bIndex);
+          }
+          else
+            this.bottom = this.bottoms.elementAtIndex(this.bIndex);
+      }
+      else {
+          console.log("bottom broke");
+      }
+  }
+  changeShoe() {
+      if (!this.shoes.isEmpty()) {
+          this.sIndex++;
+          if (this.sIndex >= this.shoes.size())
+          {
+              this.sIndex = 0;
+              this.shoe = this.shoes.elementAtIndex(this.sIndex);
+          }
+          else
+              this.shoe = this.shoes.elementAtIndex(this.sIndex);
+      }
+      else {
+          console.log("shoe broke");
+      }
   }
 
   ionViewDidLoad() {

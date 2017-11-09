@@ -21,13 +21,16 @@
   <ion-item>
     <h2>{{ this.top.name }}</h2>
     <img src={{this.top.imageURL}} />
+      <button ion-button (click)="changeTop()">Next Top</button>
   </ion-item>
   <ion-item>
     <h2>{{ this.bottom.name }}</h2>
     <img src={{this.bottom.imageURL}} />
+      <button ion-button (click)="changeBottom()">Next Bottom</button>
   </ion-item>
   <ion-item>
     <h2>{{ this.shoe.name }}</h2>
     <img src={{this.shoe.imageURL}} />
+      <button ion-button (click)="changeShoe()">Next Shoe</button>
   </ion-item>
 </ion-content>
