@@ -3,7 +3,6 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {Garment} from "../../models/garment";
 import {Outfit} from "../../models/outfit";
 import {DataServiceProvider} from "../../providers/data-service/data-service";
-//import { Collections } from 'typescript-collections';
 import {Queue} from 'typescript-collections/dist/lib';
 
 /**
@@ -25,6 +24,9 @@ export class OutfitDisplayPage {
   bottom: Garment;
   shoe: Garment;
   outfit: Outfit;
+  topMatches: Queue<string>;
+  bottomMatches: Queue<string>;
+  shoeMatches: Queue<string>;
 
   constructor(public navCtrl: NavController,
               public dsp: DataServiceProvider,
@@ -40,21 +42,27 @@ export class OutfitDisplayPage {
     this.top = new Garment();
     this.bottom = new Garment();
     this.shoe = new Garment();
+    this.topMatches = new Queue<string>();
+    this.bottomMatches = new Queue<string>();
+    this.shoeMatches = new Queue<string>();
 
     if (this.garment.type == "Top") {
-      this.top = this.garment;
-      this.setMatchingBottom();
-      this.setMatchingShoe();
+        this.top = this.garment;
+        this.topMatches.enqueue(this.garment.name);
+        this.setMatchingBottom();
+        this.setMatchingShoe();
     }
     else if (this.garment.type == "Bottom") {
-      this.bottom = this.garment;
-      this.setMatchingTop();
-      this.setMatchingShoe();
+        this.bottom = this.garment;
+        this.bottomMatches.enqueue(this.bottom.name);
+        this.setMatchingTop();
+        this.setMatchingShoe();
     }
     else{
-      this.shoe = this.garment;
-      this.setMatchingTop();
-      this.setMatchingBottom();
+        this.shoe = this.garment;
+        this.shoeMatches.enqueue(this.shoe.name);
+        this.setMatchingTop();
+        this.setMatchingBottom();
     }
   }
 
@@ -68,7 +76,8 @@ export class OutfitDisplayPage {
           })
           let count = snapshot.docs.length;
           this.top = snapshot.docs[Math.floor(Math.random() * count)].data();
-          
+          this.topMatches = q;
+          console.log(this.topMatches.isEmpty());
       })      
   }
 
@@ -82,6 +91,7 @@ export class OutfitDisplayPage {
           snapshot.forEach(function (doc) {
               q.enqueue(doc.id);
           })
+          this.bottomMatches = q;
       })
   }
 
@@ -95,6 +105,7 @@ export class OutfitDisplayPage {
           })
           let count = snapshot.docs.length;
           this.shoe = snapshot.docs[Math.floor(Math.random() * count)].data();
+          this.shoeMatches = q;
     })
   }
 
