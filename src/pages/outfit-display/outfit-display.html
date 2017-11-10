@@ -24,13 +24,13 @@
           </ion-row>
       <ion-row>
           <ion-col>
-              <button ion-button (click)="previousTop()">Previous Top</button>
+              <button ion-button (click)="previousTop()"><ion-icon name="arrow-back"></ion-icon></button>
           </ion-col>
           <ion-col>
               <img src={{this.top.imageURL}} />
           </ion-col>
           <ion-col>
-              <button ion-button (click)="nextTop()">Next Top</button>
+              <button ion-button (click)="nextTop()"><ion-icon name="arrow-forward"></ion-icon></button>
           </ion-col>
       </ion-row>
       
@@ -42,13 +42,13 @@
 
       <ion-row>
           <ion-col>
-              <button ion-button (click)="previousBottom()">Previous Bottom</button>
+              <button ion-button (click)="previousBottom()"><ion-icon name="arrow-back"></ion-icon></button>
           </ion-col>
           <ion-col>
               <img src={{this.bottom.imageURL}} />
           </ion-col>
           <ion-col>
-              <button ion-button (click)="nextBottom()">Next Bottom</button>
+              <button ion-button (click)="nextBottom()"><ion-icon name="arrow-forward"></ion-icon></button>
           </ion-col>
       </ion-row>
 
@@ -61,13 +61,13 @@
 
           <ion-row>
           <ion-col>
-              <button ion-button (click)="previousShoe()">Previous Shoe</button>
+              <button ion-button (click)="previousShoe()"><ion-icon name="arrow-back"></ion-icon></button>
           </ion-col>
           <ion-col>
               <img src={{this.shoe.imageURL}} />
           </ion-col>
           <ion-col>
-              <button ion-button (click)="nextShoe()">Next Shoe</button>
+              <button ion-button (click)="nextShoe()"><ion-icon name="arrow-forward"></ion-icon></button>
           </ion-col>
       </ion-row>
   </ion-grid>
