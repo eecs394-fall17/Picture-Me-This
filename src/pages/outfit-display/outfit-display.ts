@@ -3,7 +3,12 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {Garment} from "../../models/garment";
 import {Outfit} from "../../models/outfit";
 import {DataServiceProvider} from "../../providers/data-service/data-service";
+<<<<<<< HEAD
 import {LinkedList} from 'typescript-collections/dist/lib';
+=======
+import {MatchServiceProvider} from "../../providers/match-service/match-service";
+import {Queue, LinkedList} from 'typescript-collections/dist/lib';
+>>>>>>> origin/master
 
 /**
  * Generated class for the OutfitDisplayPage page.
@@ -31,9 +36,12 @@ export class OutfitDisplayPage {
   bIndex: number;
   sIndex: number;
 
+  matchingColors;
+
   constructor(public navCtrl: NavController,
+              public navParams: NavParams,
               public dsp: DataServiceProvider,
-              public navParams: NavParams) {
+              public msp: MatchServiceProvider) {
 
 
     this.garment = new Garment();
@@ -42,19 +50,23 @@ export class OutfitDisplayPage {
     this.garment.color = navParams.get('color');
     this.garment.imageURL = navParams.get('imageURL');
 
+    this.matchingColors = msp.getMatchingColors(this.garment.color);
+    console.log(this.matchingColors);
+
     this.top = new Garment();
     this.bottom = new Garment();
     this.shoe = new Garment();
+
     this.tops = new LinkedList<Garment>();
     this.bottoms = new LinkedList<Garment>();
     this.shoes = new LinkedList<Garment>();
+
     this.tIndex = 0;
     this.bIndex = 0;
     this.sIndex = 0;
 
     if (this.garment.type == "Top") {
         this.top = this.garment;
-        //this.topMatches.enqueue(this.garment.name);
         this.setMatchingBottom();
         this.setMatchingShoe();
     }
@@ -70,28 +82,35 @@ export class OutfitDisplayPage {
     }
   }
 
+  // TODO fix duplicated code
+  // TODO how to pick when there are multiple matching garments?
+
   setMatchingTop() {
-      // TODO change to not be random
       let ll = new LinkedList<Garment>();
-      let ref = this.dsp.getTops();
-      ref.get().then(snapshot => {
-          snapshot.forEach(function (doc) {
-              ll.add(doc.data());
-          })
-          //let count = snapshot.docs.length;
-          //this.top = snapshot.docs[Math.floor(Math.random() * count)].data();
-          this.tops = ll;
-          this.top = this.tops.first();
-      })      
+      let matchingColors = this.matchingColors;
+    let ref = this.dsp.getTops();
+
+    ref.get().then(snapshot => {
+      snapshot.forEach(function (doc) {
+        if (matchingColors.indexOf(doc.data().color) > -1) {
+            ll.add(doc.data());
+        }
+      });
+
+      this.tops = ll;
+      this.top = this.tops.first();
+    })
   }
 
   setMatchingBottom() {
       // TODO change to not be random
       let ll = new LinkedList<Garment>();
+      let matchingColors = this.matchingColors;
       let ref = this.dsp.getBottoms();
       ref.get().then(snapshot => {
           snapshot.forEach(function (doc) {
-              ll.add(doc.data());
+              if (matchingColors.indexOf(doc.data().color) > -1)
+                ll.add(doc.data());
           })
           this.bottoms = ll;
           this.bottom = this.bottoms.first();
@@ -101,15 +120,19 @@ export class OutfitDisplayPage {
   setMatchingShoe() {
       // TODO change to not be random
       let ll = new LinkedList<Garment>();
+
+      let matchingColors = this.matchingColors;
       let ref = this.dsp.getShoes();
       ref.get().then(snapshot => {
           snapshot.forEach(function (doc) {
+              if (matchingColors.indexOf(doc.data().color) > -1)
               ll.add(doc.data());
           })
           
           this.shoes = ll;
           this.shoe = ll.first();
     })
+
   }
 
   previousTop() {

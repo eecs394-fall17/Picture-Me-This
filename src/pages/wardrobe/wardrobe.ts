@@ -3,8 +3,6 @@ import {AlertController, NavController} from 'ionic-angular';
 import 'firebase/firestore';
 import {DataServiceProvider} from "../../providers/data-service/data-service";
 import {OutfitDisplayPage} from '../outfit-display/outfit-display';
-import {AddItemPage} from "../add-item/add-item";
-import {MatchServiceProvider} from "../../providers/match-service/match-service";
 
 @Component({
   selector: 'page-wardrobe',
