@@ -6,7 +6,7 @@
 -->
 <ion-header>
 
-  <ion-navbar>
+  <ion-navbar align-title="center">
     <ion-title>
       <img height="40" src="assets/imgs/logo.png"/>
     </ion-title>
@@ -16,36 +16,37 @@
 
 
 <ion-content padding>
-  <ion-title>Random Outfit!</ion-title>
-  <ion-grid>
-    <ion-row>
-      <ion-col>
-        <p>{{top.name}}</p>
-      </ion-col>
-      <ion-col>
-        <p>{{bottom.name}}</p>
-      </ion-col>
-      <ion-col>
-        <p>{{shoe.name}}</p>
-      </ion-col>
-    </ion-row>
+  <div class="content-wrapper">
+    <ion-title>Random Outfit!</ion-title>
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <p>{{top.name}}</p>
+        </ion-col>
+        <ion-col>
+          <p>{{bottom.name}}</p>
+        </ion-col>
+        <ion-col>
+          <p>{{shoe.name}}</p>
+        </ion-col>
+      </ion-row>
 
-    <ion-row>
-      <ion-col>
-        <img src={{top.imageURL}} />
-      </ion-col>
-      <ion-col>
-        <img src={{bottom.imageURL}} />
-      </ion-col>
-      <ion-col>
-        <img src={{shoe.imageURL}} />
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+      <ion-row>
+        <ion-col>
+          <img src={{top.imageURL}} />
+        </ion-col>
+        <ion-col>
+          <img src={{bottom.imageURL}} />
+        </ion-col>
+        <ion-col>
+          <img src={{shoe.imageURL}} />
+        </ion-col>
+      </ion-row>
+    </ion-grid>
 
-  <button ion-button full (click)="getRandomOutfit()">Generate New Random Outfit</button>
+    <button ion-button (click)="getRandomOutfit()" block large>Generate New Random Outfit</button>
 
-
+  </div>
   <!-- TODO Add a button to generate another random outfit! -->
 
 </ion-content>

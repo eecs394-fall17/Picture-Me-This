@@ -6,7 +6,7 @@
 -->
 <ion-header>
 
-  <ion-navbar>
+  <ion-navbar align-title="center">
     <ion-title>
       <img height="40" src="assets/imgs/logo.png"/>
     </ion-title>
@@ -17,20 +17,33 @@
 
 <ion-content padding>
   <ion-title>Here's your outfit!</ion-title>
-
-  <ion-item>
-    <h2>{{ this.top.name }}</h2>
-    <img src={{this.top.imageURL}} />
-      <button ion-button (click)="changeTop()">Next Top</button>
-  </ion-item>
-  <ion-item>
-    <h2>{{ this.bottom.name }}</h2>
-    <img src={{this.bottom.imageURL}} />
-      <button ion-button (click)="changeBottom()">Next Bottom</button>
-  </ion-item>
-  <ion-item>
-    <h2>{{ this.shoe.name }}</h2>
-    <img src={{this.shoe.imageURL}} />
-      <button ion-button (click)="changeShoe()">Next Shoe</button>
-  </ion-item>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <p>{{ this.top.name }}</p>
+      </ion-col>
+        <p>{{ this.bottom.name }}</p>
+      <ion-col>
+        <p>{{ this.shoe.name }}</p>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <img src={{this.top.imageURL}} />
+      </ion-col>
+        <img src={{this.bottom.imageURL}} />
+      <ion-col>
+        <img src={{this.shoe.imageURL}} />
+      </ion-col>
+    </ion-row>
+    <!-- <ion-row>
+      <ion-col>
+        <button ion-button (click)="changeTop()">Next Top</button>
+      </ion-col>
+        <button ion-button (click)="changeBottom()">Next Bottom</button>
+      <ion-col>
+        <button ion-button (click)="changeShoe()">Next Shoe</button>
+      </ion-col>
+    </ion-row> -->
+  </ion-grid>
 </ion-content>
