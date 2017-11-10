@@ -47,7 +47,6 @@ export class OutfitDisplayPage {
     this.garment.imageURL = navParams.get('imageURL');
 
     this.matchingColors = msp.getMatchingColors(this.garment.color);
-    console.log(this.matchingColors);
 
     this.top = new Garment();
     this.bottom = new Garment();
@@ -162,6 +161,7 @@ export class OutfitDisplayPage {
           console.log("bottom broke");
       }
   }
+
   changeShoe() {
       if (!this.shoes.isEmpty()) {
           this.sIndex++;
@@ -176,11 +176,6 @@ export class OutfitDisplayPage {
       else {
           console.log("shoe broke");
       }
-  }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad OutfitDisplayPage');
-    console.log(this.garment.name);
   }
 
 }

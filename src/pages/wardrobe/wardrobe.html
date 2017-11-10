@@ -6,84 +6,57 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content>
+
+  <ion-title padding>Wardrobe</ion-title>
 
   <ion-list>
-    <ion-list-header>
-      My Clothes
-    </ion-list-header>
+
+    <div *ngFor="let g of [[garmentsT, 'Tops'], [garmentsB, 'Bottoms'], [garmentsS, 'Shoes']]">
+
       <ion-item-divider>
-          Tops
+        <p>{{g[1]}}</p>
       </ion-item-divider>
-    <!--
-    TODO
-    We have three different sections that do virtually the same thing.
-    Is there a way to not have this duplicated code?
-    -->
-    <ion-item *ngFor="let garmentTop of garmentsT | async">
-      <h1>{{garmentTop.name}}</h1>
-      <img src={{garmentTop.imageURL}}/>
 
-      <ion-row>
-        <ion-col>
-          <p>Type: {{garmentTop.type}}</p>
-        </ion-col>
-        <ion-col>
-          <p>Color: {{garmentTop.color}}</p>
-        </ion-col>
-        <ion-col col-2>
-          <button ion-button (click)="removeGarment(garmentTop)" clear icon-start>
-            <ion-icon name='trash'></ion-icon>
-          </button>
-        </ion-col>
-      </ion-row>
-      <button ion-button full large (click)="pushDisplayOutfit(garmentTop)">Make Outfit</button>
+      <ion-slides padding>
+        <ion-slide *ngFor="let garment of g[0] | async">
 
-    </ion-item>
-      <ion-item-divider>
-          Bottoms
-      </ion-item-divider>
-      <ion-item *ngFor="let garmentBottom of garmentsB | async">
-        <h1>{{garmentBottom.name}}</h1>
-        <img src={{garmentBottom.imageURL}}/>
+          <ion-grid no-padding>
+            <ion-row>
+              <ion-col>
+                <h3>{{garment.name}}</h3>
+              </ion-col>
+            </ion-row>
 
-        <ion-row>
-          <ion-col>
-            <p>Type: {{garmentBottom.type}}</p>
-          </ion-col>
-          <ion-col>
-            <p>Color: {{garmentBottom.color}}</p>
-          </ion-col>
-          <ion-col col-2>
-            <button ion-button (click)="removeGarment(garmentBottom)" clear icon-start>
-              <ion-icon name='trash'></ion-icon>
-            </button>
-          </ion-col>
-        </ion-row>
-        <button ion-button full large (click)="pushDisplayOutfit(garmentBottom)">Make Outfit</button>
-      </ion-item>
-      <ion-item-divider>
-          Shoes
-      </ion-item-divider>
-      <ion-item *ngFor="let garmentShoe of garmentsS | async">
-        <h1>{{garmentShoe.name}}</h1>
-        <img src={{garmentShoe.imageURL}}/>
+            <ion-row>
+              <ion-col>
+                <img src={{garment.imageURL}} style="height:150px;" (click)="pushDisplayOutfit(garment)" />
+              </ion-col>
+            </ion-row>
 
-        <ion-row>
-          <ion-col>
-            <p>Type: {{garmentShoe.type}}</p>
-          </ion-col>
-          <ion-col>
-            <p>Color: {{garmentShoe.color}}</p>
-          </ion-col>
-          <ion-col col-2>
-            <button ion-button (click)="removeGarment(garmentShoe)" clear icon-start>
-              <ion-icon name='trash'></ion-icon>
-            </button>
-          </ion-col>
-        </ion-row>
-        <button ion-button full large (click)="pushDisplayOutfit(garmentShoe)">Make Outfit</button>
-      </ion-item>
+            <ion-row>
+              <ion-col>
+                <button ion-button small (click)="pushDisplayOutfit(garment)">Make Outfit</button>
+              </ion-col>
+            </ion-row>
+
+            <ion-row>
+
+              <ion-col>
+                <p>Color: {{garment.color}}</p>
+              </ion-col>
+
+              <ion-col>
+                <button ion-button (click)="removeGarment(garment)" clear icon-start>
+                  <ion-icon name='trash'></ion-icon>
+                </button>
+              </ion-col>
+            </ion-row>
+
+          </ion-grid>
+        </ion-slide>
+      </ion-slides>
+    </div>
 
   </ion-list>
 
