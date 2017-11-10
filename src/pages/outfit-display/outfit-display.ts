@@ -3,7 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {Garment} from "../../models/garment";
 import {Outfit} from "../../models/outfit";
 import {DataServiceProvider} from "../../providers/data-service/data-service";
-import {Queue, LinkedList} from 'typescript-collections/dist/lib';
+import {LinkedList} from 'typescript-collections/dist/lib';
 
 /**
  * Generated class for the OutfitDisplayPage page.
@@ -90,12 +90,11 @@ export class OutfitDisplayPage {
       let ll = new LinkedList<Garment>();
       let ref = this.dsp.getBottoms();
       ref.get().then(snapshot => {
-          let count = snapshot.docs.length;
-          this.bottom = snapshot.docs[Math.floor(Math.random() * count)].data();
           snapshot.forEach(function (doc) {
               ll.add(doc.data());
           })
           this.bottoms = ll;
+          this.bottom = this.bottoms.first();
       })
   }
 
@@ -107,13 +106,25 @@ export class OutfitDisplayPage {
           snapshot.forEach(function (doc) {
               ll.add(doc.data());
           })
-          let count = snapshot.docs.length;
-          this.shoe = snapshot.docs[Math.floor(Math.random() * count)].data();
+          
           this.shoes = ll;
+          this.shoe = ll.first();
     })
   }
 
-  changeTop() {
+  previousTop() {
+      if (!this.tops.isEmpty()) {
+          this.tIndex++;
+          if (this.tIndex < 0) {
+              this.tIndex = this.tops.size() - 1;
+              this.top = this.tops.elementAtIndex(this.tIndex);
+          }
+          else
+              this.top = this.tops.elementAtIndex(this.tIndex);
+      }
+  }
+
+  nextTop() {
       if (!this.tops.isEmpty()) {
           this.tIndex++;
           if (this.tIndex >= this.tops.size()) {
@@ -127,8 +138,18 @@ export class OutfitDisplayPage {
           console.log("top broke");
       }
   }
-
-  changeBottom() {
+  previousBottom() {
+      if (!this.bottoms.isEmpty()) {
+          this.bIndex--;
+          if (this.bIndex < 0) {
+              this.bIndex = this.bottoms.size() - 1;
+              this.bottom = this.bottoms.elementAtIndex(this.bIndex);
+          }
+          else
+              this.bottom = this.bottoms.elementAtIndex(this.bIndex);
+      }
+  }
+  nextBottom() {
       if (!this.bottoms.isEmpty()) {
           this.bIndex++;
           if (this.bIndex >= this.bottoms.size()) {
@@ -142,7 +163,19 @@ export class OutfitDisplayPage {
           console.log("bottom broke");
       }
   }
-  changeShoe() {
+  previousShoe() {
+      if (!this.shoes.isEmpty()) {
+          this.sIndex--;
+          if (this.sIndex < 0) {
+              this.sIndex = this.shoes.size() - 1;
+              this.shoe = this.shoes.elementAtIndex(this.sIndex);
+          }
+          else
+              this.shoe = this.shoes.elementAtIndex(this.sIndex);
+      }
+  }
+
+  nextShoe() {
       if (!this.shoes.isEmpty()) {
           this.sIndex++;
           if (this.sIndex >= this.shoes.size())
