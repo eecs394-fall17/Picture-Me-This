@@ -21,7 +21,6 @@ export class WardrobePage {
       this.garmentsB = this.dsp.afs.collection("Users").doc("hello").collection("Bottoms").valueChanges();
 
       this.garmentsS = this.dsp.afs.collection("Users").doc("hello").collection("Shoes").valueChanges();
-    console.log(this.garmentsT);
   }
 
   pushDisplayOutfit(garment){

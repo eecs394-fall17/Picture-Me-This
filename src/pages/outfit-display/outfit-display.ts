@@ -3,12 +3,9 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {Garment} from "../../models/garment";
 import {Outfit} from "../../models/outfit";
 import {DataServiceProvider} from "../../providers/data-service/data-service";
-<<<<<<< HEAD
 import {LinkedList} from 'typescript-collections/dist/lib';
-=======
 import {MatchServiceProvider} from "../../providers/match-service/match-service";
-import {Queue, LinkedList} from 'typescript-collections/dist/lib';
->>>>>>> origin/master
+
 
 /**
  * Generated class for the OutfitDisplayPage page.
@@ -51,7 +48,6 @@ export class OutfitDisplayPage {
     this.garment.imageURL = navParams.get('imageURL');
 
     this.matchingColors = msp.getMatchingColors(this.garment.color);
-    console.log(this.matchingColors);
 
     this.top = new Garment();
     this.bottom = new Garment();
@@ -212,11 +208,6 @@ export class OutfitDisplayPage {
       else {
           console.log("shoe broke");
       }
-  }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad OutfitDisplayPage');
-    console.log(this.garment.name);
   }
 
 }
