@@ -29,6 +29,7 @@ export class AddItemPage {
               public isp: ImageServiceProvider,
               public navParams: NavParams) {
     this.garment = new Garment();
+    this.base64Image = null;
 
     // this prefix is needed for the img tag to display it properly in add-item.html
     this.base64Prefix = "data:image/jpeg;base64,";
@@ -75,6 +76,12 @@ export class AddItemPage {
     }, (err) => {
       console.log(err);
     });
+  }
+
+  ionViewDidLoad() {
+    if (!this.base64Image) {
+      this.takePicture();
+    }
   }
 
 }
