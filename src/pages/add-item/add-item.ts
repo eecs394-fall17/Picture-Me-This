@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {AlertController, IonicPage, NavController, NavParams} from 'ionic-angular';
 import {Garment} from "../../models/garment";
 import {DataServiceProvider} from "../../providers/data-service/data-service";
 import {Camera} from "@ionic-native/camera";
@@ -21,9 +21,9 @@ import * as firebase from "firebase";
 export class AddItemPage {
   garment: Garment;
   base64Image: string;
-  base64Prefix: string;
 
   constructor(public navCtrl: NavController,
+              public alertCtrl: AlertController,
               public dsp: DataServiceProvider,
               public camera: Camera,
               public isp: ImageServiceProvider,
@@ -31,12 +31,22 @@ export class AddItemPage {
     this.garment = new Garment();
     this.base64Image = null;
 
-    // this prefix is needed for the img tag to display it properly in add-item.html
-    this.base64Prefix = "data:image/jpeg;base64,";
   }
 
   saveClothing() {
     // TODO don't continue if a field is missing.
+    if (!this.base64Image || !this.garment.name || !this.garment.type || !this.garment.name || !this.garment.style) {
+
+      this.alertCtrl.create({
+        title: "Incomplete Fields",
+        message: "You didn't fill out all the fields!",
+        buttons: ['Ok']
+      }).present();
+
+      return;
+    }
+
+
     this.garment.color = this.garment.color.toLowerCase();
 
     // get a reference to a location in storage:
@@ -65,11 +75,6 @@ export class AddItemPage {
 
       // base64Image will store the raw image as base64.
       this.base64Image = imageData;
-
-      // base64Prefix stores the raw image as well, but with a prefix beforehand (see constructor).
-      // TODO probably better not to store giant image string twice...
-      // TODO maybe just prepend prefix in a function before sending to html.
-      this.base64Prefix += imageData;
 
     }, (err) => {
       console.log(err);

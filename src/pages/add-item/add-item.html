@@ -27,8 +27,15 @@
       </ion-item>
 
       <ion-item>
-        <img [src]="base64Prefix" *ngIf="base64Image" />
-        <button ion-button (click)="takePicture()" block >Retake Picture</button>
+        <div *ngIf="base64Image">
+          <img [src]="'data:image/jpeg;base64,' + base64Image" />
+          <button ion-button (click)="takePicture()" block >Retake Picture</button>
+        </div>
+
+        <div *ngIf="!base64Image">
+          <button ion-button (click)="takePicture()" block >Take Picture</button>
+        </div>
+
       </ion-item>
 
           <ion-item>Select Clothing Type:</ion-item>
