@@ -34,12 +34,27 @@ export class AddItemPage {
   }
 
   saveClothing() {
-    // TODO don't continue if a field is missing.
-    if (!this.base64Image || !this.garment.name || !this.garment.type || !this.garment.name || !this.garment.style) {
+
+    if (!this.base64Image || !this.garment.name || !this.garment.type || !this.garment.color || !this.garment.style) {
+
+      let msg = "You didn't fill out all the fields! Please enter the following: ";
+
+      let fields = [
+        (this.base64Image, "Take image"), (this.garment.name, "Clothing name"),
+        (this.garment.type, "Clothing type"), (this.garment.color, "Color"), (this.garment.style, "Style")
+      ];
+
+      // report each field that user didn't fill out:
+      fields.forEach(field => {
+        if (!field[0]) {
+          msg += fields[1] + ", "
+        }
+      });
+      msg = msg.substring(0,msg.length-2);
 
       this.alertCtrl.create({
         title: "Incomplete Fields",
-        message: "You didn't fill out all the fields!",
+        message: msg,
         buttons: ['Ok']
       }).present();
 
