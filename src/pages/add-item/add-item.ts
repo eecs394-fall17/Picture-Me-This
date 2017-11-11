@@ -71,8 +71,6 @@ export class AddItemPage {
       // TODO maybe just prepend prefix in a function before sending to html.
       this.base64Prefix += imageData;
 
-      var button = document.getElementById("take");
-      button.style.display = "none";
     }, (err) => {
       console.log(err);
     });
