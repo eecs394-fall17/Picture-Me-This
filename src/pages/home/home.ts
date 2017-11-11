@@ -21,6 +21,7 @@ export class HomePage {
   shoe: Garment = new Garment();
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public dsp: DataServiceProvider) {
+    // Firestore PERMISSION DENIED Error when page loads
     this.getRandomOutfit();
   }
 

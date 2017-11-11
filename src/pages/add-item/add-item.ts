@@ -29,7 +29,6 @@ export class AddItemPage {
               public isp: ImageServiceProvider,
               public navParams: NavParams) {
     this.garment = new Garment();
-    this.base64Image = null;
 
   }
 
@@ -40,16 +39,17 @@ export class AddItemPage {
       let msg = "You didn't fill out all the fields! Please enter the following: ";
 
       let fields = [
-        (this.base64Image, "Take image"), (this.garment.name, "Clothing name"),
-        (this.garment.type, "Clothing type"), (this.garment.color, "Color"), (this.garment.style, "Style")
+        [this.base64Image, "Picture"], [this.garment.name, "Name"],
+        [this.garment.type, "Type"], [this.garment.color, "Color"], [this.garment.style, "Style"]
       ];
 
       // report each field that user didn't fill out:
       fields.forEach(field => {
         if (!field[0]) {
-          msg += fields[1] + ", "
+          msg += field[1] + ", "
         }
       });
+
       msg = msg.substring(0,msg.length-2);
 
       this.alertCtrl.create({
@@ -57,6 +57,8 @@ export class AddItemPage {
         message: msg,
         buttons: ['Ok']
       }).present();
+
+
 
       return;
     }
