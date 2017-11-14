@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
-import {AlertController, IonicPage, NavController, NavParams} from 'ionic-angular';
+import {AlertController, IonicPage, NavController, NavParams, ToastController} from 'ionic-angular';
 import {Garment} from "../../models/garment";
 import {DataServiceProvider} from "../../providers/data-service/data-service";
 import {Camera} from "@ionic-native/camera";
 import {ImageServiceProvider} from "../../providers/image-service/image-service";
 import * as firebase from "firebase";
+import {WardrobePage} from "../wardrobe/wardrobe";
+import {HomePage} from "../home/home";
 
 /**
  * Generated class for the AddItemPage page.
@@ -24,6 +26,7 @@ export class AddItemPage {
 
   constructor(public navCtrl: NavController,
               public alertCtrl: AlertController,
+              public toastCtrl: ToastController,
               public dsp: DataServiceProvider,
               public camera: Camera,
               public isp: ImageServiceProvider,
@@ -58,8 +61,6 @@ export class AddItemPage {
         buttons: ['Ok']
       }).present();
 
-
-
       return;
     }
 
@@ -80,8 +81,16 @@ export class AddItemPage {
       console.log(err);
     });
 
-    // pop back to the home page.
-    this.navCtrl.pop();
+
+    // feedback: tell user garment has been saved.
+    this.toastCtrl.create({
+      message: this.garment.name + " was successfully added",
+      duration: 3000,
+      position: 'top'
+    }).present();
+
+    // continue to wardrobe.
+    this.navCtrl.setRoot(HomePage);
   }
 
   takePicture() {
@@ -98,7 +107,7 @@ export class AddItemPage {
     });
   }
 
-  ionViewDidLoad() {
+  ionViewDidEnter() {
     if (!this.base64Image) {
       this.takePicture();
     }

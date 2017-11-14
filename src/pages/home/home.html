@@ -18,27 +18,27 @@
 <ion-content padding>
   <div class="content-wrapper">
     <div>
-      <ion-grid>
-        <div id="icons">
-          <ion-row>
-            <ion-col class="actualButton" >
-              <ion-icon name="add"></ion-icon>
+      <ion-grid text-center align-items-center>
+        <div class="icons">
+          <ion-row justify-content-center>
+            <ion-col>
+              <button ion-button block large (click)="this.navCtrl.parent.select(1)"><ion-icon name="add"></ion-icon></button>
             </ion-col>
-            <ion-col class="actualButton">
-              <ion-icon name="shirt"></ion-icon>
+            <ion-col>
+              <button ion-button block large (click)="this.navCtrl.parent.select(2)"><ion-icon name="shirt"></ion-icon></button>
             </ion-col>
           </ion-row>
         </div>
-        <ion-row>
+        <ion-row justify-content-center>
           <ion-col>
             <p>
               Start with new item
             </p>
           </ion-col>
+          <ion-col>
             <p>
               Start from wardrobe
             </p>
-          <ion-col>
           </ion-col>
         </ion-row>
       </ion-grid>
