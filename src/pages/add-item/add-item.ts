@@ -5,6 +5,9 @@ import {DataServiceProvider} from "../../providers/data-service/data-service";
 import {Camera} from "@ionic-native/camera";
 import {ImageServiceProvider} from "../../providers/image-service/image-service";
 import * as firebase from "firebase";
+import {WardrobePage} from "../wardrobe/wardrobe";
+import {HomePage} from "../home/home";
+import {OptionsPage} from "../options/options";
 
 /**
  * Generated class for the AddItemPage page.
@@ -87,8 +90,9 @@ export class AddItemPage {
       position: 'top'
     }).present();
 
+    this.pushOptions(this.garment);
     // continue to HomePage.
-    this.navCtrl.parent.select(0);
+    //this.navCtrl.parent.select(0);
   }
 
   takePicture() {
@@ -103,6 +107,15 @@ export class AddItemPage {
     }, (err) => {
       console.log(err);
     });
+  }
+
+  pushOptions(garment) {
+      this.navCtrl.push(OptionsPage, {
+          name: garment.name,
+          type: garment.type,
+          color: garment.color,
+          imageURL: garment.imageURL
+      });
   }
 
   ionViewDidEnter() {
