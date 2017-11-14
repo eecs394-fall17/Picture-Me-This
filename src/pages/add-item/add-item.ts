@@ -1,12 +1,10 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {AlertController, IonicPage, NavController, NavParams, ToastController} from 'ionic-angular';
 import {Garment} from "../../models/garment";
 import {DataServiceProvider} from "../../providers/data-service/data-service";
 import {Camera} from "@ionic-native/camera";
 import {ImageServiceProvider} from "../../providers/image-service/image-service";
 import * as firebase from "firebase";
-import {WardrobePage} from "../wardrobe/wardrobe";
-import {HomePage} from "../home/home";
 
 /**
  * Generated class for the AddItemPage page.
@@ -53,7 +51,7 @@ export class AddItemPage {
         }
       });
 
-      msg = msg.substring(0,msg.length-2);
+      msg = msg.substring(0, msg.length - 2);
 
       this.alertCtrl.create({
         title: "Incomplete Fields",
@@ -68,10 +66,10 @@ export class AddItemPage {
     this.garment.color = this.garment.color.toLowerCase();
 
     // get a reference to a location in storage:
-    const ref = firebase.storage().ref('Users/hello/' + this.garment.type + "s" + '/' + this.garment.name.replace(" ","") + '.jpg');
+    const ref = firebase.storage().ref('Users/hello/' + this.garment.type + "s" + '/' + this.garment.name.replace(" ", "") + '.jpg');
 
     // store the image at that reference
-    ref.putString(this.base64Image, 'base64', { contentType: 'image/jpg' }).then(snapshot => {
+    ref.putString(this.base64Image, 'base64', {contentType: 'image/jpg'}).then(snapshot => {
       // get the URL for the image and save it to garment.
       this.garment.imageURL = snapshot.downloadURL;
 

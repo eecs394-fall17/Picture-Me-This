@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {Component} from '@angular/core';
+import {IonicPage, NavController, NavParams} from 'ionic-angular';
 import {Garment} from "../../models/garment";
 import {Outfit} from "../../models/outfit";
 import {DataServiceProvider} from "../../providers/data-service/data-service";
@@ -62,34 +62,33 @@ export class OutfitDisplayPage {
     this.sIndex = 0;
 
     if (this.garment.type == "Top") {
-        this.top = this.garment;
-        this.setMatchingBottom();
-        this.setMatchingShoe();
+      this.top = this.garment;
+      this.setMatchingBottom();
+      this.setMatchingShoe();
     }
     else if (this.garment.type == "Bottom") {
-        this.bottom = this.garment;
-        this.setMatchingTop();
-        this.setMatchingShoe();
+      this.bottom = this.garment;
+      this.setMatchingTop();
+      this.setMatchingShoe();
     }
-    else{
-        this.shoe = this.garment;
-        this.setMatchingTop();
-        this.setMatchingBottom();
+    else {
+      this.shoe = this.garment;
+      this.setMatchingTop();
+      this.setMatchingBottom();
     }
   }
 
   // TODO fix duplicated code
-  // TODO how to pick when there are multiple matching garments?
 
   setMatchingTop() {
-      let ll = new LinkedList<Garment>();
-      let matchingColors = this.matchingColors;
+    let ll = new LinkedList<Garment>();
+    let matchingColors = this.matchingColors;
     let ref = this.dsp.getTops();
 
     ref.get().then(snapshot => {
       snapshot.forEach(function (doc) {
         if (matchingColors.indexOf(doc.data().color) > -1) {
-            ll.add(doc.data());
+          ll.add(doc.data());
         }
       });
 
@@ -99,115 +98,115 @@ export class OutfitDisplayPage {
   }
 
   setMatchingBottom() {
-      // TODO change to not be random
-      let ll = new LinkedList<Garment>();
-      let matchingColors = this.matchingColors;
-      let ref = this.dsp.getBottoms();
-      ref.get().then(snapshot => {
-          snapshot.forEach(function (doc) {
-              if (matchingColors.indexOf(doc.data().color) > -1)
-                ll.add(doc.data());
-          })
-          this.bottoms = ll;
-          this.bottom = this.bottoms.first();
+    let ll = new LinkedList<Garment>();
+    let matchingColors = this.matchingColors;
+    let ref = this.dsp.getBottoms();
+    ref.get().then(snapshot => {
+      snapshot.forEach(function (doc) {
+        if (matchingColors.indexOf(doc.data().color) > -1)
+          ll.add(doc.data());
       })
+      this.bottoms = ll;
+      this.bottom = this.bottoms.first();
+    })
   }
 
   setMatchingShoe() {
-      // TODO change to not be random
-      let ll = new LinkedList<Garment>();
+    let ll = new LinkedList<Garment>();
 
-      let matchingColors = this.matchingColors;
-      let ref = this.dsp.getShoes();
-      ref.get().then(snapshot => {
-          snapshot.forEach(function (doc) {
-              if (matchingColors.indexOf(doc.data().color) > -1)
-              ll.add(doc.data());
-          })
-          
-          this.shoes = ll;
-          this.shoe = ll.first();
+    let matchingColors = this.matchingColors;
+    let ref = this.dsp.getShoes();
+    ref.get().then(snapshot => {
+      snapshot.forEach(function (doc) {
+        if (matchingColors.indexOf(doc.data().color) > -1)
+          ll.add(doc.data());
+      })
+
+      this.shoes = ll;
+      this.shoe = ll.first();
     })
 
   }
 
   previousTop() {
-      if (!this.tops.isEmpty()) {
-          this.tIndex++;
-          if (this.tIndex < 0) {
-              this.tIndex = this.tops.size() - 1;
-              this.top = this.tops.elementAtIndex(this.tIndex);
-          }
-          else
-              this.top = this.tops.elementAtIndex(this.tIndex);
+    if (!this.tops.isEmpty()) {
+      this.tIndex++;
+      if (this.tIndex < 0) {
+        this.tIndex = this.tops.size() - 1;
+        this.top = this.tops.elementAtIndex(this.tIndex);
       }
+      else
+        this.top = this.tops.elementAtIndex(this.tIndex);
+    }
   }
 
   nextTop() {
-      if (!this.tops.isEmpty()) {
-          this.tIndex++;
-          if (this.tIndex >= this.tops.size()) {
-              this.tIndex = 0;
-              this.top = this.tops.elementAtIndex(this.tIndex);
-          }
-          else
-              this.top = this.tops.elementAtIndex(this.tIndex);
+    if (!this.tops.isEmpty()) {
+      this.tIndex++;
+      if (this.tIndex >= this.tops.size()) {
+        this.tIndex = 0;
+        this.top = this.tops.elementAtIndex(this.tIndex);
       }
-      else {
-          console.log("top broke");
-      }
+      else
+        this.top = this.tops.elementAtIndex(this.tIndex);
+    }
+    else {
+      console.log("top broke");
+    }
   }
+
   previousBottom() {
-      if (!this.bottoms.isEmpty()) {
-          this.bIndex--;
-          if (this.bIndex < 0) {
-              this.bIndex = this.bottoms.size() - 1;
-              this.bottom = this.bottoms.elementAtIndex(this.bIndex);
-          }
-          else
-              this.bottom = this.bottoms.elementAtIndex(this.bIndex);
+    if (!this.bottoms.isEmpty()) {
+      this.bIndex--;
+      if (this.bIndex < 0) {
+        this.bIndex = this.bottoms.size() - 1;
+        this.bottom = this.bottoms.elementAtIndex(this.bIndex);
       }
+      else
+        this.bottom = this.bottoms.elementAtIndex(this.bIndex);
+    }
   }
+
   nextBottom() {
-      if (!this.bottoms.isEmpty()) {
-          this.bIndex++;
-          if (this.bIndex >= this.bottoms.size()) {
-              this.bIndex = 0;
-              this.bottom = this.bottoms.elementAtIndex(this.bIndex);
-          }
-          else
-            this.bottom = this.bottoms.elementAtIndex(this.bIndex);
+    if (!this.bottoms.isEmpty()) {
+      this.bIndex++;
+      if (this.bIndex >= this.bottoms.size()) {
+        this.bIndex = 0;
+        this.bottom = this.bottoms.elementAtIndex(this.bIndex);
       }
-      else {
-          console.log("bottom broke");
-      }
+      else
+        this.bottom = this.bottoms.elementAtIndex(this.bIndex);
+    }
+    else {
+      console.log("bottom broke");
+    }
   }
+
   previousShoe() {
-      if (!this.shoes.isEmpty()) {
-          this.sIndex--;
-          if (this.sIndex < 0) {
-              this.sIndex = this.shoes.size() - 1;
-              this.shoe = this.shoes.elementAtIndex(this.sIndex);
-          }
-          else
-              this.shoe = this.shoes.elementAtIndex(this.sIndex);
+    if (!this.shoes.isEmpty()) {
+      this.sIndex--;
+      if (this.sIndex < 0) {
+        this.sIndex = this.shoes.size() - 1;
+        this.shoe = this.shoes.elementAtIndex(this.sIndex);
       }
+      else
+        this.shoe = this.shoes.elementAtIndex(this.sIndex);
+    }
   }
 
   nextShoe() {
-      if (!this.shoes.isEmpty()) {
-          this.sIndex++;
-          if (this.sIndex >= this.shoes.size())
-          {
-              this.sIndex = 0;
-              this.shoe = this.shoes.elementAtIndex(this.sIndex);
-          }
-          else
-              this.shoe = this.shoes.elementAtIndex(this.sIndex);
+    if (!this.shoes.isEmpty()) {
+      this.sIndex++;
+      if (this.sIndex >= this.shoes.size()) {
+        this.sIndex = 0;
+        this.shoe = this.shoes.elementAtIndex(this.sIndex);
       }
-      else {
-          console.log("shoe broke");
-      }
+      else
+        this.shoe = this.shoes.elementAtIndex(this.sIndex);
+    }
+    else {
+      console.log("shoe broke");
+    }
   }
 
 }

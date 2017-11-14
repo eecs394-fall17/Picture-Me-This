@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {AlertController, NavController} from 'ionic-angular';
 import 'firebase/firestore';
 import {DataServiceProvider} from "../../providers/data-service/data-service";
@@ -12,18 +12,19 @@ export class WardrobePage {
   garmentsT;
   garmentsB;
   garmentsS;
+
   constructor(public navCtrl: NavController,
               public alertCtrl: AlertController,
               public dsp: DataServiceProvider) {
     // TODO user key needs to be streamlined, whenever we decide to develop auth.
     // TODO database calls need to be streamlined by creating functions in DataServiceProvider.
-      this.garmentsT = this.dsp.afs.collection("Users").doc("hello").collection("Tops").valueChanges();
-      this.garmentsB = this.dsp.afs.collection("Users").doc("hello").collection("Bottoms").valueChanges();
+    this.garmentsT = this.dsp.afs.collection("Users").doc("hello").collection("Tops").valueChanges();
+    this.garmentsB = this.dsp.afs.collection("Users").doc("hello").collection("Bottoms").valueChanges();
 
-      this.garmentsS = this.dsp.afs.collection("Users").doc("hello").collection("Shoes").valueChanges();
+    this.garmentsS = this.dsp.afs.collection("Users").doc("hello").collection("Shoes").valueChanges();
   }
 
-  pushDisplayOutfit(garment){
+  pushDisplayOutfit(garment) {
     this.navCtrl.push(OutfitDisplayPage, {
       name: garment.name,
       type: garment.type,

@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import {Injectable} from '@angular/core';
+import {Http} from '@angular/http';
 import 'rxjs/add/operator/map';
 
 import * as firebase from "firebase";
@@ -22,6 +22,7 @@ export class DataServiceProvider {
   public db;
   public uid; //user id for authentication later
   public garment: Garment;
+
   constructor(public http: Http, public afs: AngularFirestore) {
     this.db = firebase.firestore();
     this.uid = "hello"; //for now, hard code user id. TODO update later
@@ -56,25 +57,25 @@ export class DataServiceProvider {
   }
 
   getPieceofClothing(type: string, color: string) {
-      this.garment = new Garment();
-      this.garment.name = "bad";
-      this.db.collection("Users").doc(this.uid).collection(type)
-          .where("color", "==", color)
-          .get()
-          .then(function (querySnapshot) {
-             querySnapshot.forEach(function (doc) {
-               console.log(doc.id, " => ", doc.data());
-               console.log(doc.data().name);
+    this.garment = new Garment();
+    this.garment.name = "bad";
+    this.db.collection("Users").doc(this.uid).collection(type)
+      .where("color", "==", color)
+      .get()
+      .then(function (querySnapshot) {
+        querySnapshot.forEach(function (doc) {
+          console.log(doc.id, " => ", doc.data());
+          console.log(doc.data().name);
 
-                 //below is the value needed but isn't being returned to parent caller
-                 //using this.garment.name = doc.data().name created undefined error on garment
-                 //Seems like garment isn't visible inside these functions
-                return doc.data().name;
-                //this.garment.type = doc.data("type");
-                //this.garment.color = doc.data("color");
-            });
+          //below is the value needed but isn't being returned to parent caller
+          //using this.garment.name = doc.data().name created undefined error on garment
+          //Seems like garment isn't visible inside these functions
+          return doc.data().name;
+          //this.garment.type = doc.data("type");
+          //this.garment.color = doc.data("color");
         });
-      return this.garment.name;
+      });
+    return this.garment.name;
   }
 
   addClothing(type: string, garment: Garment) {
@@ -89,7 +90,7 @@ export class DataServiceProvider {
 
   removeClothing(garment: Garment) {
     // delete image from storage
-    const storage_ref = firebase.storage().ref('Users/' + this.uid + '/' + garment.type + "s" + '/' + garment.name.replace(" ","") + '.jpg');
+    const storage_ref = firebase.storage().ref('Users/' + this.uid + '/' + garment.type + "s" + '/' + garment.name.replace(" ", "") + '.jpg');
     storage_ref.delete();
 
     // delete entry from database
