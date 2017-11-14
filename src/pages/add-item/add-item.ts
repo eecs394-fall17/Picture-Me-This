@@ -89,10 +89,10 @@ export class AddItemPage {
       duration: 3000,
       position: 'top'
     }).present();
-
-    // continue to wardrobe.
-    //this.navCtrl.setRoot(HomePage);
+      
     this.pushOptions(this.garment);
+    // continue to HomePage.
+    //this.navCtrl.parent.select(0);
   }
 
   takePicture() {
