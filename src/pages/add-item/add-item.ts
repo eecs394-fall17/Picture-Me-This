@@ -89,8 +89,8 @@ export class AddItemPage {
       position: 'top'
     }).present();
 
-    // continue to wardrobe.
-    this.navCtrl.setRoot(HomePage);
+    // continue to HomePage.
+    this.navCtrl.parent.select(0);
   }
 
   takePicture() {
