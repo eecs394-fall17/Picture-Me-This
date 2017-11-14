@@ -25,17 +25,17 @@
         </ion-col>
           </ion-row>
       <ion-row>
-          <ion-col col-auto>
+          <ion-col col-auto *ngIf="this.garment.type != 'Top'">
               <button ion-button (click)="previousTop()" style="height: 100%"><ion-icon name="arrow-back"></ion-icon></button>
           </ion-col>
           <ion-col col-auto>
               <img src={{this.top.imageURL}} />
           </ion-col>
-          <ion-col col-auto>
+          <ion-col col-auto *ngIf="this.garment.type != 'Top'">
               <button ion-button (click)="nextTop()" style="height: 100%"><ion-icon name="arrow-forward"></ion-icon></button>
           </ion-col>
       </ion-row>
-      
+
           <ion-row>
               <ion-col col-auto>
                   <p>{{ this.bottom.name }}</p>
@@ -43,13 +43,13 @@
               </ion-row>
 
       <ion-row>
-          <ion-col col-auto>
+          <ion-col col-auto *ngIf="this.garment.type != 'Bottom'">
               <button ion-button (click)="previousBottom()" style="height: 100%"><ion-icon name="arrow-back"></ion-icon></button>
           </ion-col>
           <ion-col col-auto>
               <img src={{this.bottom.imageURL}} />
           </ion-col>
-          <ion-col col-auto>
+          <ion-col col-auto *ngIf="this.garment.type != 'Bottom'">
               <button ion-button (click)="nextBottom()" style="height: 100%"><ion-icon name="arrow-forward"></ion-icon></button>
           </ion-col>
       </ion-row>
@@ -62,13 +62,13 @@
 
 
           <ion-row>
-          <ion-col  col-auto>
+          <ion-col  col-auto *ngIf="this.garment.type != 'Shoe'">
               <button ion-button (click)="previousShoe()" style="height: 100%"><ion-icon name="arrow-back"></ion-icon></button>
           </ion-col>
           <ion-col col-auto>
               <img src={{this.shoe.imageURL}} />
           </ion-col>
-          <ion-col col-auto>
+          <ion-col col-auto *ngIf="this.garment.type != 'Shoe'">
               <button ion-button (click)="nextShoe()" style="height: 100%"><ion-icon name="arrow-forward"></ion-icon></button>
           </ion-col>
       </ion-row>

@@ -7,4 +7,9 @@ page-outfit-display {
   p {
     white-space: normal;
   }
+
+  ion-grid * {
+    display: flex;
+    justify-content: center;
+  }
 }
