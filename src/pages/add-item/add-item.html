@@ -28,72 +28,72 @@
 
       <ion-item>
         <div *ngIf="base64Image">
-          <img [src]="'data:image/jpeg;base64,' + base64Image" />
-          <button ion-button (click)="takePicture()" block >Retake Picture</button>
+          <img [src]="'data:image/jpeg;base64,' + base64Image"/>
+          <button ion-button (click)="takePicture()" block>Retake Picture</button>
         </div>
 
         <div *ngIf="!base64Image">
-          <button ion-button (click)="takePicture()" block >Take Picture</button>
+          <button ion-button (click)="takePicture()" block>Take Picture</button>
         </div>
 
       </ion-item>
 
-          <ion-item>Select Clothing Type:</ion-item>
+      <ion-item>Select Clothing Type:</ion-item>
 
-        <ion-list radio-group [(ngModel)]="garment.type" floating>
-            <ion-item>
-                <ion-label>Top</ion-label>
-                <ion-radio value="Top" checked></ion-radio>
-            </ion-item>
-            <ion-item>
-                <ion-label>Bottom</ion-label>
-                <ion-radio value="Bottom"></ion-radio>
-            </ion-item>
-            <ion-item>
-                <ion-label>Shoe</ion-label>
-                <ion-radio value="Shoe"></ion-radio>
-            </ion-item>
-        </ion-list>
+      <ion-list radio-group [(ngModel)]="garment.type" floating>
+        <ion-item>
+          <ion-label>Top</ion-label>
+          <ion-radio value="Top" checked></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>Bottom</ion-label>
+          <ion-radio value="Bottom"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>Shoe</ion-label>
+          <ion-radio value="Shoe"></ion-radio>
+        </ion-item>
+      </ion-list>
 
       <ion-item>
         <ion-label color="primary" stacked>Color</ion-label>
         <ion-select [(ngModel)]="garment.color" placeholder="Choose Color">
-            <ion-option value="beige">Beige</ion-option>
-            <ion-option value="black">Black</ion-option>
-            <ion-option value="brown">Brown</ion-option>
-            <ion-option value="dark blue">Dark Blue</ion-option>
-            <ion-option value="green">Green</ion-option>
-            <ion-option value="grey">Grey</ion-option>
-            <ion-option value="light blue">Light Blue</ion-option>
-            <ion-option value="orange">Orange</ion-option>
-            <ion-option value="pink">Pink</ion-option>
-            <ion-option value="purple">Purple</ion-option>
-            <ion-option value="red">Red</ion-option>
-            <ion-option value="white">White</ion-option>
-            <ion-option value="yellow">Yellow</ion-option>
+          <ion-option value="beige">Beige</ion-option>
+          <ion-option value="black">Black</ion-option>
+          <ion-option value="brown">Brown</ion-option>
+          <ion-option value="dark blue">Dark Blue</ion-option>
+          <ion-option value="green">Green</ion-option>
+          <ion-option value="grey">Grey</ion-option>
+          <ion-option value="light blue">Light Blue</ion-option>
+          <ion-option value="orange">Orange</ion-option>
+          <ion-option value="pink">Pink</ion-option>
+          <ion-option value="purple">Purple</ion-option>
+          <ion-option value="red">Red</ion-option>
+          <ion-option value="white">White</ion-option>
+          <ion-option value="yellow">Yellow</ion-option>
         </ion-select>
       </ion-item>
 
-        <ion-item>
-            <ion-label color="primary" stacked>Style</ion-label>
-            <ion-select [(ngModel)]="garment.style" placeholder="Choose Style">
-                <ion-option value="Casual">Casual</ion-option>
-                <ion-option value="Formal">Formal</ion-option>
-                <ion-option value="Informal">Informal</ion-option>
-            </ion-select>
-        </ion-item>
+      <ion-item>
+        <ion-label color="primary" stacked>Style</ion-label>
+        <ion-select [(ngModel)]="garment.style" placeholder="Choose Style">
+          <ion-option value="Casual">Casual</ion-option>
+          <ion-option value="Formal">Formal</ion-option>
+          <ion-option value="Informal">Informal</ion-option>
+        </ion-select>
+      </ion-item>
       <!--<ion-list *ngIf="acDestinations.length > 0" style="position: absolute; z-index: 1000">-->
-        <!--<ion-item *ngFor="let item of acDestinations" (click)="selectDestination(item)">-->
-          <!--{{ item.description }}-->
-        <!--</ion-item>-->
+      <!--<ion-item *ngFor="let item of acDestinations" (click)="selectDestination(item)">-->
+      <!--{{ item.description }}-->
+      <!--</ion-item>-->
       <!--</ion-list>-->
       <!--<ion-item>-->
-        <!--<ion-label color="primary" floating>Get Ready Time (minutes)</ion-label>-->
-        <!--<ion-input type="number" [(ngModel)]="readyTime" required></ion-input>-->
+      <!--<ion-label color="primary" floating>Get Ready Time (minutes)</ion-label>-->
+      <!--<ion-input type="number" [(ngModel)]="readyTime" required></ion-input>-->
       <!--</ion-item>-->
       <!--<ion-item>-->
-        <!--<ion-label floating>Arrival Time</ion-label>-->
-        <!--<ion-datetime displayFormat="hh:mm A" [(ngModel)]="arrivalTimeString" (ionChange)="arrivalTimeChange()"></ion-datetime>-->
+      <!--<ion-label floating>Arrival Time</ion-label>-->
+      <!--<ion-datetime displayFormat="hh:mm A" [(ngModel)]="arrivalTimeString" (ionChange)="arrivalTimeChange()"></ion-datetime>-->
       <!--</ion-item>-->
     </div>
     <button ion-button (click)="saveClothing()" block large>Save Item</button>
