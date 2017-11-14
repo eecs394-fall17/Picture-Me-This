@@ -21,13 +21,13 @@
       <img src={{this.garment.imageURL}}/>
     </ion-row>
     <ion-row>
-      <button ion-button (click)="pushAddItem()">Add Another Item</button>
+      <button ion-button (click)="pushAddItem()" full>Add Another Item</button>
     </ion-row>
     <ion-row>
-      <button ion-button (click)="pushOutfitDisplay(this.garment)">Make Outift From This Item</button>
+      <button ion-button (click)="pushOutfitDisplay(this.garment)" full>Make Outift From This Item</button>
     </ion-row>
     <ion-row>
-      <button ion-button (click)="pushWardrobe()">Go To Wardrobe</button>
+      <button ion-button (click)="pushWardrobe()" full>Go To Wardrobe</button>
     </ion-row>
   </ion-grid>
 
