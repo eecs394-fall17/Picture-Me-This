@@ -7,6 +7,7 @@ import {ImageServiceProvider} from "../../providers/image-service/image-service"
 import * as firebase from "firebase";
 import {WardrobePage} from "../wardrobe/wardrobe";
 import {HomePage} from "../home/home";
+import {OptionsPage} from "../options/options";
 
 /**
  * Generated class for the AddItemPage page.
@@ -90,7 +91,8 @@ export class AddItemPage {
     }).present();
 
     // continue to wardrobe.
-    this.navCtrl.setRoot(HomePage);
+    //this.navCtrl.setRoot(HomePage);
+    this.pushOptions(this.garment);
   }
 
   takePicture() {
@@ -105,6 +107,15 @@ export class AddItemPage {
     }, (err) => {
       console.log(err);
     });
+  }
+
+  pushOptions(garment) {
+      this.navCtrl.push(OptionsPage, {
+          name: garment.name,
+          type: garment.type,
+          color: garment.color,
+          imageURL: garment.imageURL
+      });
   }
 
   ionViewDidEnter() {
