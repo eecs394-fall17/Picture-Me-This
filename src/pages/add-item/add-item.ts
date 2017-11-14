@@ -78,21 +78,22 @@ export class AddItemPage {
 
       // save the garment!
       this.dsp.addClothing(this.garment.type + "s", this.garment);
+
+
+
+      // feedback: tell user garment has been saved.
+      this.toastCtrl.create({
+          message: this.garment.name + " was successfully added",
+          duration: 3000,
+          position: 'top'
+      }).present();
+
+      this.pushOptions(this.garment);
+    // continue to HomePage.
+    //this.navCtrl.parent.select(0);
     }, err => {
       console.log(err);
     });
-
-
-    // feedback: tell user garment has been saved.
-    this.toastCtrl.create({
-      message: this.garment.name + " was successfully added",
-      duration: 3000,
-      position: 'top'
-    }).present();
-
-    this.pushOptions(this.garment);
-    // continue to HomePage.
-    //this.navCtrl.parent.select(0);
   }
 
   takePicture() {
