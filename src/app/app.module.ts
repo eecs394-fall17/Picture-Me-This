@@ -1,23 +1,24 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { ErrorHandler, NgModule } from '@angular/core';
-import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
-import { SplashScreen } from '@ionic-native/splash-screen';
-import { StatusBar } from '@ionic-native/status-bar';
+import {BrowserModule} from '@angular/platform-browser';
+import {ErrorHandler, NgModule} from '@angular/core';
+import {IonicApp, IonicErrorHandler, IonicModule} from 'ionic-angular';
+import {SplashScreen} from '@ionic-native/splash-screen';
+import {StatusBar} from '@ionic-native/status-bar';
 
-import { MyApp } from './app.component';
-import { WardrobePage } from '../pages/wardrobe/wardrobe';
-import { AddItemPage } from '../pages/add-item/add-item';
-import { OutfitDisplayPage} from '../pages/outfit-display/outfit-display';
+import {MyApp} from './app.component';
+import {WardrobePage} from '../pages/wardrobe/wardrobe';
+import {AddItemPage} from '../pages/add-item/add-item';
+import {OutfitDisplayPage} from '../pages/outfit-display/outfit-display';
 
-import { HttpModule } from '@angular/http';
-import { DataServiceProvider } from '../providers/data-service/data-service';
-import { AngularFireModule } from 'angularfire2';
-import { AngularFirestoreModule } from 'angularfire2/firestore';
-import { Camera } from '@ionic-native/camera';
-import { Environment } from './app.environment.config';
-import { ImageServiceProvider } from '../providers/image-service/image-service';
+import {HttpModule} from '@angular/http';
+import {DataServiceProvider} from '../providers/data-service/data-service';
+import {AngularFireModule} from 'angularfire2';
+import {AngularFirestoreModule} from 'angularfire2/firestore';
+import {Camera} from '@ionic-native/camera';
+import {Environment} from './app.environment.config';
+import {ImageServiceProvider} from '../providers/image-service/image-service';
 import {HomePage} from "../pages/home/home";
-import { MatchServiceProvider } from '../providers/match-service/match-service';
+import {MatchServiceProvider} from '../providers/match-service/match-service';
+import {OptionsPage} from "../pages/options/options";
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { MatchServiceProvider } from '../providers/match-service/match-service';
     HomePage,
     WardrobePage,
     OutfitDisplayPage,
-    AddItemPage
+    AddItemPage,
+    OptionsPage
   ],
   imports: [
     HttpModule,
@@ -41,7 +43,8 @@ import { MatchServiceProvider } from '../providers/match-service/match-service';
     HomePage,
     WardrobePage,
     OutfitDisplayPage,
-    AddItemPage
+    AddItemPage,
+    OptionsPage
   ],
   providers: [
     StatusBar,
@@ -53,4 +56,5 @@ import { MatchServiceProvider } from '../providers/match-service/match-service';
     MatchServiceProvider
   ]
 })
-export class AppModule {}
+export class AppModule {
+}

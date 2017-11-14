@@ -33,7 +33,7 @@ export class OptionsPage {
         this.navCtrl.push(WardrobePage);
     }
 
-    pushDisplayOutfit(garment) {
+    pushOutfitDisplay(garment) {
         this.navCtrl.push(OutfitDisplayPage, {
             name: garment.name,
             type: garment.type,
