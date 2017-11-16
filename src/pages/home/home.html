@@ -15,7 +15,12 @@
 </ion-header>
 
 
-<ion-content padding>
+<ion-content>
+
+  <ion-item-divider class="center" color="light">
+    Create Curated Outfit
+  </ion-item-divider>
+
   <div class="content-wrapper">
     <div>
       <ion-grid text-center align-items-center>
@@ -43,7 +48,11 @@
         </ion-row>
       </ion-grid>
     </div>
-    <ion-title>Random Outfit!</ion-title>
+
+    <ion-item-divider color="light">
+      Create Random Outfit
+    </ion-item-divider>
+
     <ion-grid>
       <ion-row>
         <ion-col>
@@ -70,7 +79,12 @@
       </ion-row>
     </ion-grid>
 
-    <button ion-button (click)="getRandomOutfit()" block large>Generate New Random Outfit</button>
+    <!--<button ion-button (click)="getRandomOutfit()">Create Random Outfit</button>-->
+    <div>
+      <button ion-button (click)="getRandomOutfit()" large icon-only>
+        <ion-icon name='shuffle'></ion-icon>
+      </button>
+    </div>
 
   </div>
 
