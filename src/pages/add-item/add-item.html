@@ -6,7 +6,7 @@
 -->
 <ion-header>
 
-  <ion-navbar align-title="center">
+  <ion-navbar>
     <ion-title>
       <img height="40" src="assets/imgs/logo.png"/>
     </ion-title>
@@ -29,11 +29,11 @@
       <ion-item>
         <div *ngIf="base64Image">
           <img [src]="'data:image/jpeg;base64,' + base64Image"/>
-          <button ion-button (click)="takePicture()" block>Retake Picture</button>
+          <button ion-button (click)="takePicture()" block large>Retake Picture</button>
         </div>
 
         <div *ngIf="!base64Image">
-          <button ion-button (click)="takePicture()" block>Take Picture</button>
+          <button ion-button (click)="takePicture()" block large>Take Picture</button>
         </div>
 
       </ion-item>
@@ -82,19 +82,7 @@
           <ion-option value="Informal">Informal</ion-option>
         </ion-select>
       </ion-item>
-      <!--<ion-list *ngIf="acDestinations.length > 0" style="position: absolute; z-index: 1000">-->
-      <!--<ion-item *ngFor="let item of acDestinations" (click)="selectDestination(item)">-->
-      <!--{{ item.description }}-->
-      <!--</ion-item>-->
-      <!--</ion-list>-->
-      <!--<ion-item>-->
-      <!--<ion-label color="primary" floating>Get Ready Time (minutes)</ion-label>-->
-      <!--<ion-input type="number" [(ngModel)]="readyTime" required></ion-input>-->
-      <!--</ion-item>-->
-      <!--<ion-item>-->
-      <!--<ion-label floating>Arrival Time</ion-label>-->
-      <!--<ion-datetime displayFormat="hh:mm A" [(ngModel)]="arrivalTimeString" (ionChange)="arrivalTimeChange()"></ion-datetime>-->
-      <!--</ion-item>-->
+
     </div>
     <button ion-button (click)="saveClothing()" block large>Save Item</button>
   </div>
