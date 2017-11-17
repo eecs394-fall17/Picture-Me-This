@@ -36,33 +36,29 @@
         </div>
         <ion-row justify-content-center>
           <ion-col>
-            <p>
               Start with new item
-            </p>
           </ion-col>
           <ion-col>
-            <p>
               Start from wardrobe
-            </p>
           </ion-col>
         </ion-row>
       </ion-grid>
     </div>
 
     <ion-item-divider color="light">
-      <h1><b>Create Random Outfit</b></h1>
+      <h1><b>Outfit Of The Day</b></h1>
     </ion-item-divider>
 
     <ion-grid>
       <ion-row>
         <ion-col>
-          <p>{{top.name}}</p>
+          {{top.name}}
         </ion-col>
         <ion-col>
-          <p>{{bottom.name}}</p>
+          {{bottom.name}}
         </ion-col>
         <ion-col>
-          <p>{{shoe.name}}</p>
+          {{shoe.name}}
         </ion-col>
       </ion-row>
 
@@ -84,6 +80,8 @@
       <button ion-button (click)="getRandomOutfit()" large icon-only>
         <ion-icon name='shuffle'></ion-icon>
       </button>
+      <br/>
+      New Outfit
     </div>
 
   </div>
