@@ -14,19 +14,21 @@
 
     <div *ngFor="let g of [[garmentsT, 'Tops'], [garmentsB, 'Bottoms'], [garmentsS, 'Shoes']]">
 
-      <ion-item-divider>
-        <p>{{g[1]}}</p>
-      </ion-item-divider>
+      <div>
+        <ion-item-divider>
+          <p>{{g[1]}}</p>
+        </ion-item-divider>
+      </div>
 
       <ion-slides padding>
         <ion-slide *ngFor="let garment of g[0] | async">
 
           <ion-grid no-padding>
-            <ion-row>
+            <!-- <ion-row>
               <ion-col>
                 <h3>{{garment.name}}</h3>
               </ion-col>
-            </ion-row>
+            </ion-row> -->
 
             <ion-row>
               <ion-col>
@@ -35,13 +37,19 @@
             </ion-row>
 
             <ion-row>
+              <!-- <ion-col> -->
+                <p>{{garment.name}}</p>
+              <!-- </ion-col> -->
 
+
+            </ion-row>
+            <ion-row>
               <ion-col>
                 <button ion-button small (click)="pushDisplayOutfit(garment)">Make Outfit</button>
               </ion-col>
 
               <ion-col>
-                <button ion-button (click)="removeGarment(garment)" clear icon-start>
+                <button ion-button small (click)="removeGarment(garment)">
                   <ion-icon name='trash'></ion-icon>
                 </button>
               </ion-col>

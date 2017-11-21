@@ -22,11 +22,6 @@
   <div class="content">
     <div>
       <ion-item>
-        <ion-label color="primary" stacked>Clothing Name</ion-label>
-        <ion-input [(ngModel)]="garment.name" placeholder="ex: My Favorite Shirt"></ion-input>
-      </ion-item>
-
-      <ion-item>
         <div *ngIf="base64Image">
           <img [src]="'data:image/jpeg;base64,' + base64Image"/>
           <button ion-button (click)="takePicture()" block large>Retake Picture</button>
@@ -38,9 +33,15 @@
 
       </ion-item>
 
-      <ion-item>Select Clothing Type:</ion-item>
+      <ion-item>
+        <ion-label color="primary" stacked>Clothing Name</ion-label>
+        <ion-input [(ngModel)]="garment.name" placeholder="ex: My Favorite Shirt"></ion-input>
+      </ion-item>
 
-      <ion-list radio-group [(ngModel)]="garment.type" floating>
+
+      <!-- <ion-item>Select Clothing Type:</ion-item> -->
+
+      <!-- <ion-list radio-group [(ngModel)]="garment.type" floating>
         <ion-item>
           <ion-label>Top</ion-label>
           <ion-radio value="Top" checked></ion-radio>
@@ -53,7 +54,16 @@
           <ion-label>Shoe</ion-label>
           <ion-radio value="Shoe"></ion-radio>
         </ion-item>
-      </ion-list>
+      </ion-list> -->
+
+      <ion-item>
+        <ion-label color="primary" stacked>Type</ion-label>
+        <ion-select [(ngModel)]="garment.type" placeholder="Choose type">
+          <ion-option value="Top">Top</ion-option>
+          <ion-option value="Bottom">Bottom</ion-option>
+          <ion-option value="Shoe">Shoe</ion-option>
+        </ion-select>
+      </ion-item>
 
       <ion-item>
         <ion-label color="primary" stacked>Color</ion-label>
