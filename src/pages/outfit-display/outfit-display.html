@@ -18,7 +18,7 @@
 <ion-content padding>
   <ion-title>Here's your outfit!</ion-title>
 
-  <ion-grid text-center *ngFor="let itemsObj of [{type: 'Top', items: this.topItems}, {type: 'Bottom', items: this.bottomItems}, {type: 'Shoe', items: this.shoeItems}]">
+  <ion-grid text-center *ngFor="let itemsObj of [{type: 'Top', items: this.topItems}, {type: 'Bottom', items: this.bottomItems}, {type: 'Shoe', items: this.shoeItems}]" no-padding>
 
     <ion-row>
       <ion-col col-auto>
@@ -32,7 +32,7 @@
           <ion-icon name="arrow-back"></ion-icon>
         </button>
       </ion-col>
-      <ion-col col-auto>
+      <ion-col col-auto (click)="displayInfo(itemsObj.items.item)" padding>
         <img src={{itemsObj.items.item.imageURL}}/>
       </ion-col>
       <ion-col col-auto *ngIf="this.garment.type != itemsObj.type">

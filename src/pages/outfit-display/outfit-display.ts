@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {IonicPage, NavController, NavParams} from 'ionic-angular';
+import {AlertController, IonicPage, NavController, NavParams} from 'ionic-angular';
 import {Garment} from "../../models/garment";
 import {Outfit} from "../../models/outfit";
 import {DataServiceProvider} from "../../providers/data-service/data-service";
@@ -32,6 +32,7 @@ export class OutfitDisplayPage {
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
+              public alertCtrl: AlertController,
               public dsp: DataServiceProvider,
               public msp: MatchServiceProvider) {
 
@@ -109,4 +110,12 @@ export class OutfitDisplayPage {
     }
   }
 
+  displayInfo(item) {
+    let msg = "Name: " + item.name + "<br/>Color: " + item.color + "<br/>Type: " + item.type;
+    this.alertCtrl.create({
+      title: "Clothing Info",
+      message: msg,
+      buttons: ['Close']
+    }).present();
+  }
 }
