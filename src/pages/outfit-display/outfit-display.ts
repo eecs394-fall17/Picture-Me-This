@@ -93,7 +93,10 @@ export class OutfitDisplayPage {
       });
 
       this.tops = ll;
-      this.top = this.tops.first();
+
+      // get random item
+      this.tIndex = Math.floor(Math.random() * this.tops.size());
+      this.top = this.tops.elementAtIndex(this.tIndex);
     })
   }
 
@@ -107,7 +110,10 @@ export class OutfitDisplayPage {
           ll.add(doc.data());
       })
       this.bottoms = ll;
-      this.bottom = this.bottoms.first();
+
+      // get random item
+      this.bIndex = Math.floor(Math.random() * this.bottoms.size());
+      this.bottom = this.bottoms.elementAtIndex(this.bIndex);
     })
   }
 
@@ -123,7 +129,10 @@ export class OutfitDisplayPage {
       })
 
       this.shoes = ll;
-      this.shoe = ll.first();
+
+      // get random item
+      this.sIndex = Math.floor(Math.random() * this.shoes.size());
+      this.shoe = this.shoes.elementAtIndex(this.sIndex);
     })
 
   }
