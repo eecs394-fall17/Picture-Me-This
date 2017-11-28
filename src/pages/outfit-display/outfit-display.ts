@@ -139,7 +139,7 @@ export class OutfitDisplayPage {
 
   previousTop() {
     if (!this.tops.isEmpty()) {
-      this.tIndex++;
+      this.tIndex--;
       if (this.tIndex < 0) {
         this.tIndex = this.tops.size() - 1;
         this.top = this.tops.elementAtIndex(this.tIndex);
