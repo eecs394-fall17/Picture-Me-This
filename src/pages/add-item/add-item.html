@@ -35,30 +35,12 @@
 
       <ion-item>
         <ion-label color="primary" stacked>Clothing Name</ion-label>
-        <ion-input [(ngModel)]="garment.name" placeholder="ex: My Favorite Shirt"></ion-input>
+        <ion-input [(ngModel)]="garment.name" placeholder="My Favorite Shirt"></ion-input>
       </ion-item>
-
-
-      <!-- <ion-item>Select Clothing Type:</ion-item> -->
-
-      <!-- <ion-list radio-group [(ngModel)]="garment.type" floating>
-        <ion-item>
-          <ion-label>Top</ion-label>
-          <ion-radio value="Top" checked></ion-radio>
-        </ion-item>
-        <ion-item>
-          <ion-label>Bottom</ion-label>
-          <ion-radio value="Bottom"></ion-radio>
-        </ion-item>
-        <ion-item>
-          <ion-label>Shoe</ion-label>
-          <ion-radio value="Shoe"></ion-radio>
-        </ion-item>
-      </ion-list> -->
 
       <ion-item>
         <ion-label color="primary" stacked>Type</ion-label>
-        <ion-select [(ngModel)]="garment.type" placeholder="Choose type">
+        <ion-select [(ngModel)]="garment.type" placeholder="Choose Type">
           <ion-option value="Top">Top</ion-option>
           <ion-option value="Bottom">Bottom</ion-option>
           <ion-option value="Shoe">Shoe</ion-option>
@@ -84,17 +66,8 @@
         </ion-select>
       </ion-item>
 
-      <!-- <ion-item>
-        <ion-label color="primary" stacked>Style</ion-label>
-        <ion-select [(ngModel)]="garment.style" placeholder="Choose Style">
-          <ion-option value="Casual">Casual</ion-option>
-          <ion-option value="Formal">Formal</ion-option>
-          <ion-option value="Informal">Informal</ion-option>
-        </ion-select>
-      </ion-item> -->
-
     </div>
-    <div class="space">
+    <div padding>
       <button ion-button (click)="saveClothing()" block large>Save Item</button>
     </div>
 
