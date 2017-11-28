@@ -18,59 +18,29 @@
 <ion-content padding>
   <ion-title>Here's your outfit!</ion-title>
 
-  <ion-grid text-center>
+  <ion-grid text-center *ngFor="let itemsObj of [{type: 'Top', items: this.topItems}, {type: 'Bottom', items: this.bottomItems}, {type: 'Shoe', items: this.shoeItems}]">
+
     <ion-row>
-        <ion-col col-auto>
-            <p>{{ this.topItems.item.name }}</p>
-        </ion-col>
-          </ion-row>
-      <ion-row>
-          <ion-col col-auto *ngIf="this.garment.type != 'Top'">
-              <button ion-button (click)="previousItem(this.topItems)" style="height: 100%"><ion-icon name="arrow-back"></ion-icon></button>
-          </ion-col>
-          <ion-col col-auto>
-              <img src={{this.topItems.item.imageURL}} />
-          </ion-col>
-          <ion-col col-auto *ngIf="this.garment.type != 'Top'">
-              <button ion-button (click)="nextItem(this.topItems)" style="height: 100%"><ion-icon name="arrow-forward"></ion-icon></button>
-          </ion-col>
-      </ion-row>
+      <ion-col col-auto>
+        <p>{{itemsObj.items.item.name}}</p>
+      </ion-col>
+    </ion-row>
 
-          <ion-row>
-              <ion-col col-auto>
-                  <p>{{ this.bottomItems.item.name }}</p>
-              </ion-col>
-              </ion-row>
+    <ion-row>
+      <ion-col col-auto *ngIf="this.garment.type != itemsObj.type">
+        <button ion-button (click)="previousItem(itemsObj.items)" style="height: 100%">
+          <ion-icon name="arrow-back"></ion-icon>
+        </button>
+      </ion-col>
+      <ion-col col-auto>
+        <img src={{itemsObj.items.item.imageURL}}/>
+      </ion-col>
+      <ion-col col-auto *ngIf="this.garment.type != itemsObj.type">
+        <button ion-button (click)="nextItem(itemsObj.items)" style="height: 100%">
+          <ion-icon name="arrow-forward"></ion-icon>
+        </button>
+      </ion-col>
+    </ion-row>
 
-      <ion-row>
-          <ion-col col-auto *ngIf="this.garment.type != 'Bottom'">
-              <button ion-button (click)="previousItem(this.bottomItems)" style="height: 100%"><ion-icon name="arrow-back"></ion-icon></button>
-          </ion-col>
-          <ion-col col-auto>
-              <img src={{this.bottomItems.item.imageURL}} />
-          </ion-col>
-          <ion-col col-auto *ngIf="this.garment.type != 'Bottom'">
-              <button ion-button (click)="nextItem(this.bottomItems)" style="height: 100%"><ion-icon name="arrow-forward"></ion-icon></button>
-          </ion-col>
-      </ion-row>
-
-          <ion-row>
-              <ion-col col-auto>
-                  <p>{{ this.shoeItems.item.name }}</p>
-              </ion-col>
-          </ion-row>
-
-
-          <ion-row>
-          <ion-col  col-auto *ngIf="this.garment.type != 'Shoe'">
-              <button ion-button (click)="previousItem(this.shoeItems)" style="height: 100%"><ion-icon name="arrow-back"></ion-icon></button>
-          </ion-col>
-          <ion-col col-auto>
-              <img src={{this.shoeItems.item.imageURL}} />
-          </ion-col>
-          <ion-col col-auto *ngIf="this.garment.type != 'Shoe'">
-              <button ion-button (click)="nextItem(this.shoeItems)" style="height: 100%"><ion-icon name="arrow-forward"></ion-icon></button>
-          </ion-col>
-      </ion-row>
   </ion-grid>
 </ion-content>
