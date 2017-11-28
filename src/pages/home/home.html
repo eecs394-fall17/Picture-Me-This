@@ -16,6 +16,44 @@
 
 
 <ion-content>
+  <ion-item-divider color="light">
+    <h1><b>Outfit Of The Day</b></h1>
+  </ion-item-divider>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        {{top.name}}
+      </ion-col>
+      <ion-col>
+        {{bottom.name}}
+      </ion-col>
+      <ion-col>
+        {{shoe.name}}
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <img src={{top.imageURL}}/>
+      </ion-col>
+      <ion-col>
+        <img src={{bottom.imageURL}}/>
+      </ion-col>
+      <ion-col>
+        <img src={{shoe.imageURL}}/>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <!--<button ion-button (click)="getRandomOutfit()">Create Random Outfit</button>-->
+  <div>
+    <button ion-button (click)="getRandomOutfit()" block large>
+      <ion-icon name='shuffle'></ion-icon>
+    </button>
+    <br/>
+    New Outfit
+  </div>
 
   <ion-item-divider class="center" color="light">
     <h1><b>Create Curated Outfit</b></h1>
@@ -45,44 +83,7 @@
       </ion-grid>
     </div>
 
-    <ion-item-divider color="light">
-      <h1><b>Outfit Of The Day</b></h1>
-    </ion-item-divider>
 
-    <ion-grid>
-      <ion-row>
-        <ion-col>
-          {{top.name}}
-        </ion-col>
-        <ion-col>
-          {{bottom.name}}
-        </ion-col>
-        <ion-col>
-          {{shoe.name}}
-        </ion-col>
-      </ion-row>
-
-      <ion-row>
-        <ion-col>
-          <img src={{top.imageURL}}/>
-        </ion-col>
-        <ion-col>
-          <img src={{bottom.imageURL}}/>
-        </ion-col>
-        <ion-col>
-          <img src={{shoe.imageURL}}/>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-
-    <!--<button ion-button (click)="getRandomOutfit()">Create Random Outfit</button>-->
-    <div>
-      <button ion-button (click)="getRandomOutfit()" large icon-only>
-        <ion-icon name='shuffle'></ion-icon>
-      </button>
-      <br/>
-      New Outfit
-    </div>
 
   </div>
 

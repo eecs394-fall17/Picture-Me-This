@@ -84,16 +84,19 @@
         </ion-select>
       </ion-item>
 
-      <ion-item>
+      <!-- <ion-item>
         <ion-label color="primary" stacked>Style</ion-label>
         <ion-select [(ngModel)]="garment.style" placeholder="Choose Style">
           <ion-option value="Casual">Casual</ion-option>
           <ion-option value="Formal">Formal</ion-option>
           <ion-option value="Informal">Informal</ion-option>
         </ion-select>
-      </ion-item>
+      </ion-item> -->
 
     </div>
-    <button ion-button (click)="saveClothing()" block large>Save Item</button>
+    <div class="space">
+      <button ion-button (click)="saveClothing()" block large>Save Item</button>
+    </div>
+
   </div>
 </ion-content>

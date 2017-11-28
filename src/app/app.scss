@@ -23,6 +23,13 @@ ion-navbar {
   text-align: center;
 }
 
+img {
+  border:1px solid white;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  border-radius: 20px;
+}
+
 // @font-face{
 // font-family: OpenSans;
 // src: url('../assets/fonts/open-sans.woff2') format('woff2');
