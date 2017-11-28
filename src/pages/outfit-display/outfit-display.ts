@@ -33,6 +33,10 @@ export class OutfitDisplayPage {
   bIndex: number;
   sIndex: number;
 
+  topItems;
+  bottomItems;
+  shoeItems;
+
   matchingColors;
 
   constructor(public navCtrl: NavController,
@@ -61,160 +65,121 @@ export class OutfitDisplayPage {
     this.bIndex = 0;
     this.sIndex = 0;
 
+
+    // package info as objects that can be passed into functions
+    this.topItems = {
+      item: this.top,
+      list: this.tops,
+      index: this.tIndex
+    };
+
+    this.bottomItems = {
+      item: this.bottom,
+      list: this.bottoms,
+      index: this.bIndex
+    };
+
+    this.shoeItems = {
+      item: this.shoe,
+      list: this.shoes,
+      index: this.sIndex
+    };
+
     if (this.garment.type == "Top") {
-      this.top = this.garment;
+      this.topItems.item = this.garment;
       this.setMatchingBottom();
       this.setMatchingShoe();
     }
     else if (this.garment.type == "Bottom") {
-      this.bottom = this.garment;
+      this.bottomItems.item = this.garment;
       this.setMatchingTop();
       this.setMatchingShoe();
     }
     else {
-      this.shoe = this.garment;
+      this.shoeItems.item = this.garment;
       this.setMatchingTop();
       this.setMatchingBottom();
     }
   }
 
-  // TODO fix duplicated code
-
   setMatchingTop() {
-    let ll = new LinkedList<Garment>();
-    let matchingColors = this.matchingColors;
     let ref = this.dsp.getTops();
-
-    ref.get().then(snapshot => {
-      snapshot.forEach(function (doc) {
-        if (matchingColors.indexOf(doc.data().color) > -1) {
-          ll.add(doc.data());
-        }
-      });
-
-      this.tops = ll;
-
-      // get random item
-      this.tIndex = Math.floor(Math.random() * this.tops.size());
-      this.top = this.tops.elementAtIndex(this.tIndex);
-    })
+    this.setMatchingItem(this.topItems, ref);
   }
 
   setMatchingBottom() {
-    let ll = new LinkedList<Garment>();
-    let matchingColors = this.matchingColors;
     let ref = this.dsp.getBottoms();
-    ref.get().then(snapshot => {
-      snapshot.forEach(function (doc) {
-        if (matchingColors.indexOf(doc.data().color) > -1)
-          ll.add(doc.data());
-      })
-      this.bottoms = ll;
-
-      // get random item
-      this.bIndex = Math.floor(Math.random() * this.bottoms.size());
-      this.bottom = this.bottoms.elementAtIndex(this.bIndex);
-    })
+    this.setMatchingItem(this.bottomItems, ref);
   }
 
   setMatchingShoe() {
+    let ref = this.dsp.getShoes();
+    this.setMatchingItem(this.shoeItems, ref);
+  }
+
+  previousTop() {
+    this.previousItem(this.topItems);
+  }
+
+  nextTop() {
+    this.nextItem(this.topItems);
+  }
+
+  previousBottom() {
+    this.previousItem(this.bottomItems);
+  }
+
+  nextBottom() {
+    this.nextItem(this.bottomItems);
+  }
+
+  previousShoe() {
+    this.previousItem(this.shoeItems);
+  }
+
+  nextShoe() {
+    this.nextItem(this.shoeItems);
+  }
+
+  setMatchingItem(items, ref) {
     let ll = new LinkedList<Garment>();
 
     let matchingColors = this.matchingColors;
-    let ref = this.dsp.getShoes();
     ref.get().then(snapshot => {
       snapshot.forEach(function (doc) {
         if (matchingColors.indexOf(doc.data().color) > -1)
           ll.add(doc.data());
-      })
+      });
 
-      this.shoes = ll;
+      items.list= ll;
 
       // get random item
-      this.sIndex = Math.floor(Math.random() * this.shoes.size());
-      this.shoe = this.shoes.elementAtIndex(this.sIndex);
-    })
-
+      items.index = Math.floor(Math.random() * items.list.size());
+      items.item = items.list.elementAtIndex(items.index);
+    });
   }
 
-  previousTop() {
-    if (!this.tops.isEmpty()) {
-      this.tIndex--;
-      if (this.tIndex < 0) {
-        this.tIndex = this.tops.size() - 1;
-        this.top = this.tops.elementAtIndex(this.tIndex);
+  previousItem(items) {
+    if (!items.list.isEmpty()) {
+      items.index--;
+      if (items.index < 0) {
+        items.index = items.list.size() - 1;
+        items.item = items.list.elementAtIndex(items.index);
       }
       else
-        this.top = this.tops.elementAtIndex(this.tIndex);
-    }
-  }
-
-  nextTop() {
-    if (!this.tops.isEmpty()) {
-      this.tIndex++;
-      if (this.tIndex >= this.tops.size()) {
-        this.tIndex = 0;
-        this.top = this.tops.elementAtIndex(this.tIndex);
-      }
-      else
-        this.top = this.tops.elementAtIndex(this.tIndex);
-    }
-    else {
-      console.log("top broke");
+        items.item = items.list.elementAtIndex(items.index);
     }
   }
 
-  previousBottom() {
-    if (!this.bottoms.isEmpty()) {
-      this.bIndex--;
-      if (this.bIndex < 0) {
-        this.bIndex = this.bottoms.size() - 1;
-        this.bottom = this.bottoms.elementAtIndex(this.bIndex);
+  nextItem(items) {
+    if (!items.list.isEmpty()) {
+      items.index++;
+      if (items.index >= items.list.size()) {
+        items.index = 0;
+        items.item = items.list.elementAtIndex(items.index);
       }
       else
-        this.bottom = this.bottoms.elementAtIndex(this.bIndex);
-    }
-  }
-
-  nextBottom() {
-    if (!this.bottoms.isEmpty()) {
-      this.bIndex++;
-      if (this.bIndex >= this.bottoms.size()) {
-        this.bIndex = 0;
-        this.bottom = this.bottoms.elementAtIndex(this.bIndex);
-      }
-      else
-        this.bottom = this.bottoms.elementAtIndex(this.bIndex);
-    }
-    else {
-      console.log("bottom broke");
-    }
-  }
-
-  previousShoe() {
-    if (!this.shoes.isEmpty()) {
-      this.sIndex--;
-      if (this.sIndex < 0) {
-        this.sIndex = this.shoes.size() - 1;
-        this.shoe = this.shoes.elementAtIndex(this.sIndex);
-      }
-      else
-        this.shoe = this.shoes.elementAtIndex(this.sIndex);
-    }
-  }
-
-  nextShoe() {
-    if (!this.shoes.isEmpty()) {
-      this.sIndex++;
-      if (this.sIndex >= this.shoes.size()) {
-        this.sIndex = 0;
-        this.shoe = this.shoes.elementAtIndex(this.sIndex);
-      }
-      else
-        this.shoe = this.shoes.elementAtIndex(this.sIndex);
-    }
-    else {
-      console.log("shoe broke");
+        items.item = items.list.elementAtIndex(items.index);
     }
   }
 
