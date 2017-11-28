@@ -45,48 +45,26 @@ export class OutfitDisplayPage {
     this.matchingColors = msp.getMatchingColors(this.garment.color);
 
     // package info as objects that can be passed into functions
-    this.topItems = this.initItems();
-    this.bottomItems = this.initItems();
-    this.shoeItems = this.initItems();
+    this.topItems = this.newItems();
+    this.bottomItems = this.newItems();
+    this.shoeItems = this.newItems();
 
-    if (this.garment.type == "Top") {
-      this.topItems.item = this.garment;
-      this.setMatchingBottom();
-      this.setMatchingShoe();
-    }
-    else if (this.garment.type == "Bottom") {
-      this.bottomItems.item = this.garment;
-      this.setMatchingTop();
-      this.setMatchingShoe();
-    }
-    else {
-      this.shoeItems.item = this.garment;
-      this.setMatchingTop();
-      this.setMatchingBottom();
-    }
+    if (this.garment.type != "Top")
+      this.setMatchingItem(this.topItems, this.dsp.getTops());
+
+    if (this.garment.type != "Bottom")
+      this.setMatchingItem(this.bottomItems, this.dsp.getBottoms());
+
+    if (this.garment.type != "Shoe")
+      this.setMatchingItem(this.shoeItems, this.dsp.getShoes());
   }
 
-  initItems() {
+  newItems() {
     return {
-      item: new Garment(),
+      item: this.garment,
       list: new LinkedList<Garment>(),
       index: 0
     }
-  }
-
-  setMatchingTop() {
-    let ref = this.dsp.getTops();
-    this.setMatchingItem(this.topItems, ref);
-  }
-
-  setMatchingBottom() {
-    let ref = this.dsp.getBottoms();
-    this.setMatchingItem(this.bottomItems, ref);
-  }
-
-  setMatchingShoe() {
-    let ref = this.dsp.getShoes();
-    this.setMatchingItem(this.shoeItems, ref);
   }
 
   setMatchingItem(items, ref) {
@@ -99,7 +77,7 @@ export class OutfitDisplayPage {
           ll.add(doc.data());
       });
 
-      items.list= ll;
+      items.list = ll;
 
       // get random item
       items.index = Math.floor(Math.random() * items.list.size());
