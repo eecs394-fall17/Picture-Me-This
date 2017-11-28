@@ -22,16 +22,7 @@ import {MatchServiceProvider} from "../../providers/match-service/match-service"
 export class OutfitDisplayPage {
 
   garment: Garment;
-  top: Garment;
-  bottom: Garment;
-  shoe: Garment;
-  outfit: Outfit;
-  tops: LinkedList<Garment>;
-  bottoms: LinkedList<Garment>;
-  shoes: LinkedList<Garment>;
-  tIndex: number;
-  bIndex: number;
-  sIndex: number;
+  outfit: Outfit; // currently not being used
 
   topItems;
   bottomItems;
@@ -53,37 +44,10 @@ export class OutfitDisplayPage {
 
     this.matchingColors = msp.getMatchingColors(this.garment.color);
 
-    this.top = new Garment();
-    this.bottom = new Garment();
-    this.shoe = new Garment();
-
-    this.tops = new LinkedList<Garment>();
-    this.bottoms = new LinkedList<Garment>();
-    this.shoes = new LinkedList<Garment>();
-
-    this.tIndex = 0;
-    this.bIndex = 0;
-    this.sIndex = 0;
-
-
     // package info as objects that can be passed into functions
-    this.topItems = {
-      item: this.top,
-      list: this.tops,
-      index: this.tIndex
-    };
-
-    this.bottomItems = {
-      item: this.bottom,
-      list: this.bottoms,
-      index: this.bIndex
-    };
-
-    this.shoeItems = {
-      item: this.shoe,
-      list: this.shoes,
-      index: this.sIndex
-    };
+    this.topItems = this.initItems();
+    this.bottomItems = this.initItems();
+    this.shoeItems = this.initItems();
 
     if (this.garment.type == "Top") {
       this.topItems.item = this.garment;
@@ -102,6 +66,14 @@ export class OutfitDisplayPage {
     }
   }
 
+  initItems() {
+    return {
+      item: new Garment(),
+      list: new LinkedList<Garment>(),
+      index: 0
+    }
+  }
+
   setMatchingTop() {
     let ref = this.dsp.getTops();
     this.setMatchingItem(this.topItems, ref);
@@ -115,30 +87,6 @@ export class OutfitDisplayPage {
   setMatchingShoe() {
     let ref = this.dsp.getShoes();
     this.setMatchingItem(this.shoeItems, ref);
-  }
-
-  previousTop() {
-    this.previousItem(this.topItems);
-  }
-
-  nextTop() {
-    this.nextItem(this.topItems);
-  }
-
-  previousBottom() {
-    this.previousItem(this.bottomItems);
-  }
-
-  nextBottom() {
-    this.nextItem(this.bottomItems);
-  }
-
-  previousShoe() {
-    this.previousItem(this.shoeItems);
-  }
-
-  nextShoe() {
-    this.nextItem(this.shoeItems);
   }
 
   setMatchingItem(items, ref) {
