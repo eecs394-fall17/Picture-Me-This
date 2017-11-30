@@ -11,6 +11,8 @@ import {OutfitDisplayPage} from '../outfit-display/outfit-display';
 export class WardrobePage {
   @ViewChildren(Slides) slides: QueryList<Slides>;
 
+  slideSpeed = 200; // slide speed in ms
+
   garmentsT;
   garmentsB;
   garmentsS;
@@ -18,7 +20,6 @@ export class WardrobePage {
   constructor(public navCtrl: NavController,
               public alertCtrl: AlertController,
               public dsp: DataServiceProvider) {
-
 
     // TODO user key needs to be streamlined, whenever we decide to develop auth.
     // TODO database calls need to be streamlined by creating functions in DataServiceProvider.
@@ -60,17 +61,15 @@ export class WardrobePage {
       s.lockSwipes(true);
     });
 
-    console.log(this.slides);
-    console.log(this.slides.toArray()[0]);
   }
 
   slideNext(i) {
     let s = this.slides.toArray()[i];
     s.lockSwipes(false);
     if (s.isEnd()) {
-      s.slideTo(0);
+      s.slideTo(0, this.slideSpeed);
     } else {
-      s.slideNext();
+      s.slideTo(s.getActiveIndex() + 1, this.slideSpeed);
     }
     s.lockSwipes(true);
   }
@@ -79,9 +78,9 @@ export class WardrobePage {
     let s = this.slides.toArray()[i];
     s.lockSwipes(false);
     if (s.isBeginning()) {
-      s.slideTo(s.length()-1);
+      s.slideTo(s.length() - 2, this.slideSpeed);
     } else {
-      s.slidePrev();
+      s.slideTo(s.getActiveIndex() - 1, this.slideSpeed);
     }
     s.lockSwipes(true);
   }
