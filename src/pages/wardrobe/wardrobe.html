@@ -22,36 +22,27 @@
         </ion-item-divider>
       </div>
 
-      <ion-slides padding>
+      <ion-slides padding slidesPerView="2">
         <ion-slide *ngFor="let garment of g[0] | async">
 
           <ion-grid no-padding>
-            <!-- <ion-row>
-              <ion-col>
-                <h3>{{garment.name}}</h3>
-              </ion-col>
-            </ion-row> -->
-
             <ion-row>
               <ion-col>
-                <img src={{garment.imageURL}} style="height:150px;" (click)="pushDisplayOutfit(garment)"/>
+                <img src={{garment.imageURL}} style="height:100px;" (click)="pushDisplayOutfit(garment)"/>
               </ion-col>
             </ion-row>
 
             <ion-row>
-              <!-- <ion-col> -->
-                <p>{{garment.name}}</p>
-              <!-- </ion-col> -->
-
-
+                <p style="font-size: x-small">{{garment.name}}</p>
             </ion-row>
+
             <ion-row>
               <ion-col>
-                <button ion-button small (click)="pushDisplayOutfit(garment)">Make Outfit</button>
+                <button ion-button block (click)="pushDisplayOutfit(garment)">Make Outfit</button>
               </ion-col>
 
               <ion-col>
-                <button ion-button small (click)="removeGarment(garment)">
+                <button ion-button  color="danger" (click)="removeGarment(garment)">
                   <ion-icon name='trash'></ion-icon>
                 </button>
               </ion-col>
@@ -61,7 +52,5 @@
         </ion-slide>
       </ion-slides>
     </div>
-
-  </ion-list>
 
 </ion-content>
