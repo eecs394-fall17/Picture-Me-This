@@ -30,12 +30,14 @@ export class OutfitDisplayPage {
 
   matchingColors;
 
+  finalized: boolean;
+
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               public alertCtrl: AlertController,
               public dsp: DataServiceProvider,
               public msp: MatchServiceProvider) {
-
+    this.finalized = false;
 
     this.garment = new Garment();
     this.garment.name = navParams.get('name');
@@ -117,5 +119,9 @@ export class OutfitDisplayPage {
       message: msg,
       buttons: ['Close']
     }).present();
+  }
+
+  finalizeOutfit() {
+    this.finalized = true;
   }
 }

@@ -16,20 +16,24 @@
 
 
 <ion-content>
-  <ion-item-divider color="light">
+  <ion-item-divider *ngIf="!this.finalized" color="light">
     <h1><b>Edit Your Outfit</b></h1>
   </ion-item-divider>
 
-  <ion-grid text-center *ngFor="let itemsObj of [{type: 'Top', items: this.topItems}, {type: 'Bottom', items: this.bottomItems}, {type: 'Shoe', items: this.shoeItems}]" no-padding>
+  <ion-item-divider *ngIf="this.finalized" color="light">
+    <h1><b>Get Dressed!</b></h1>
+  </ion-item-divider>
+
+  <ion-grid text-center *ngFor="let itemsObj of [{type: 'Top', items: this.topItems}, {type: 'Bottom', items: this.bottomItems}, {type: 'Shoe', items: this.shoeItems}]">
+
+    <!--<ion-row *ngIf="!this.finalized">-->
+      <!--<ion-col col-auto>-->
+        <!--<p>{{itemsObj.items.item.name}}</p>-->
+      <!--</ion-col>-->
+    <!--</ion-row>-->
 
     <ion-row>
-      <ion-col col-auto>
-        <p>{{itemsObj.items.item.name}}</p>
-      </ion-col>
-    </ion-row>
-
-    <ion-row>
-      <ion-col col-auto *ngIf="this.garment.type != itemsObj.type">
+      <ion-col col-auto *ngIf="this.garment.type != itemsObj.type && !this.finalized">
         <button ion-button (click)="previousItem(itemsObj.items)" style="height: 100%">
           <ion-icon name="arrow-back"></ion-icon>
         </button>
@@ -37,7 +41,7 @@
       <ion-col col-auto (click)="displayInfo(itemsObj.items.item)" padding>
         <img src={{itemsObj.items.item.imageURL}}/>
       </ion-col>
-      <ion-col col-auto *ngIf="this.garment.type != itemsObj.type">
+      <ion-col col-auto *ngIf="this.garment.type != itemsObj.type && !this.finalized">
         <button ion-button (click)="nextItem(itemsObj.items)" style="height: 100%">
           <ion-icon name="arrow-forward"></ion-icon>
         </button>
@@ -48,6 +52,7 @@
 
   <br/>
   <div padding>
-    <button ion-button (click)="this.navCtrl.parent.select(0)" block large>Get Dressed!</button>
+    <!--<button ion-button (click)="this.navCtrl.parent.select(0)" block large>Get Dressed!</button>-->
+    <button ion-button (click)="finalizeOutfit()" block large *ngIf="!this.finalized">Get Dressed!</button>
   </div>
 </ion-content>
