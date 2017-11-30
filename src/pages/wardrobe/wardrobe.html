@@ -14,7 +14,7 @@
 
   <ion-list>
 
-    <div *ngFor="let g of [[garmentsT, 'Tops'], [garmentsB, 'Bottoms'], [garmentsS, 'Shoes']]">
+    <div *ngFor="let g of [[garmentsT, 'Tops', 0], [garmentsB, 'Bottoms', 1], [garmentsS, 'Shoes', 2]]">
 
       <div>
         <ion-item-divider>
@@ -22,37 +22,63 @@
         </ion-item-divider>
       </div>
 
-      <ion-slides padding slidesPerView="2">
-        <ion-slide *ngFor="let garment of g[0] | async">
+      <ion-grid>
 
-          <ion-grid no-padding>
-            <ion-row>
-              <ion-col>
-                <img src={{garment.imageURL}} style="height:100px;" (click)="pushDisplayOutfit(garment)"/>
-              </ion-col>
-            </ion-row>
+        <ion-row>
 
-            <ion-row>
-              <ion-col>
-                <p style="font-size: x-small">{{garment.name}}</p>
-              </ion-col>
-            </ion-row>
+          <ion-col>
+            <button ion-button (click)="slidePrev(g[2])" style="height: 100%">
+              <ion-icon name="arrow-back"></ion-icon>
+            </button>
+          </ion-col>
 
-            <ion-row>
-              <ion-col>
-                <button ion-button block (click)="pushDisplayOutfit(garment)">Make Outfit</button>
-              </ion-col>
 
-              <ion-col>
-                <button ion-button color="danger" (click)="removeGarment(garment)">
-                  <ion-icon name='trash'></ion-icon>
-                </button>
-              </ion-col>
-            </ion-row>
+          <ion-col>
 
-          </ion-grid>
-        </ion-slide>
-      </ion-slides>
+            <ion-slides id="{{g[1]+'-slides'}}" slidesPerView="2" loop="true">
+              <ion-slide *ngFor="let garment of g[0] | async">
+
+                <ion-grid no-padding>
+                  <ion-row>
+                    <ion-col>
+                      <img src={{garment.imageURL}} style="height:100px;" (click)="pushDisplayOutfit(garment)"/>
+                    </ion-col>
+                  </ion-row>
+
+                  <ion-row>
+                    <ion-col>
+                      <p style="font-size: x-small">{{garment.name}}</p>
+                    </ion-col>
+                  </ion-row>
+
+                  <ion-row>
+                    <ion-col>
+                      <button ion-button block (click)="pushDisplayOutfit(garment)">Make Outfit</button>
+                    </ion-col>
+
+                    <ion-col>
+                      <button ion-button color="danger" (click)="removeGarment(garment)">
+                        <ion-icon name='trash'></ion-icon>
+                      </button>
+                    </ion-col>
+                  </ion-row>
+
+                </ion-grid>
+              </ion-slide>
+            </ion-slides>
+          </ion-col>
+
+
+          <ion-col>
+            <button ion-button (click)="slideNext(g[2])" style="height: 100%">
+              <ion-icon name="arrow-forward"></ion-icon>
+            </button>
+          </ion-col>
+
+        </ion-row>
+      </ion-grid>
+
+
     </div>
 
   </ion-list>
