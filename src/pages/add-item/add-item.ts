@@ -38,13 +38,13 @@ export class AddItemPage {
 
   saveClothing() {
 
-    if (!this.base64Image || !this.garment.name || !this.garment.type || !this.garment.color || !this.garment.style) {
+    if (!this.base64Image || !this.garment.name || !this.garment.type || !this.garment.color) {
 
       let msg = "You didn't fill out all the fields! Please enter the following: ";
 
       let fields = [
         [this.base64Image, "Picture"], [this.garment.name, "Name"],
-        [this.garment.type, "Type"], [this.garment.color, "Color"], [this.garment.style, "Style"]
+        [this.garment.type, "Type"], [this.garment.color, "Color"]
       ];
 
       // report each field that user didn't fill out:
