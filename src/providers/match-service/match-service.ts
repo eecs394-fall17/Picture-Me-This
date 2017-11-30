@@ -42,16 +42,22 @@ export class MatchServiceProvider {
   }
 
   getMatchingColors(color) {
+    let matchingColors = [];
+    var i = 0;
+
     if (this.colors.indexOf(color) < 0) {
-      // TODO this could be handled better.
-      throw new Error();
+      for (i = 0; i < this.colors.length; i++) {
+        matchingColors.push(1);
+      }
+
+      return matchingColors;
     }
 
-    let matchingColors = [];
+
     let colorIndex = this.colors.indexOf(color);
 
     // go to the given color's corresponding array in the matrix, and capture matching colors
-    for (var i = 0; i < this.colors.length; i++) {
+    for (i = 0; i < this.colors.length; i++) {
       if (this.colorMatrix[colorIndex][i] == 1) {
         matchingColors.push(this.colors[i]);
       }
