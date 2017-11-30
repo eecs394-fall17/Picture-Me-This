@@ -15,8 +15,10 @@
 </ion-header>
 
 
-<ion-content padding>
-  <ion-title>Here's your outfit!</ion-title>
+<ion-content>
+  <ion-item-divider color="light">
+    <h1><b>Edit Your Outfit</b></h1>
+  </ion-item-divider>
 
   <ion-grid text-center *ngFor="let itemsObj of [{type: 'Top', items: this.topItems}, {type: 'Bottom', items: this.bottomItems}, {type: 'Shoe', items: this.shoeItems}]" no-padding>
 
@@ -43,4 +45,9 @@
     </ion-row>
 
   </ion-grid>
+
+  <br/>
+  <div padding>
+    <button ion-button (click)="this.navCtrl.parent.select(0)" block large>Get Dressed!</button>
+  </div>
 </ion-content>
