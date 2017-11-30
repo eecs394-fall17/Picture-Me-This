@@ -27,13 +27,6 @@
         <ion-row>
 
           <ion-col>
-            <button ion-button (click)="slidePrev(g[2])" style="height: 100%">
-              <ion-icon name="arrow-back"></ion-icon>
-            </button>
-          </ion-col>
-
-
-          <ion-col>
 
             <ion-slides id="{{g[1]+'-slides'}}" slidesPerView="2" loop="true">
               <ion-slide *ngFor="let garment of g[0] | async">
@@ -69,13 +62,21 @@
           </ion-col>
 
 
-          <ion-col>
-            <button ion-button (click)="slideNext(g[2])" style="height: 100%">
+
+        </ion-row>
+        <ion-row>
+          <ion-col text-center>
+            <button ion-button (click)="slidePrev(g[2])" style="height: 100%" large>
+              <ion-icon name="arrow-back"></ion-icon>
+            </button>
+          </ion-col>
+          <ion-col text-center>
+            <button ion-button (click)="slideNext(g[2])" style="height: 100%" large>
               <ion-icon name="arrow-forward"></ion-icon>
             </button>
           </ion-col>
-
         </ion-row>
+
       </ion-grid>
 
 
