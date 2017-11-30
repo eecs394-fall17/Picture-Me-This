@@ -8,7 +8,7 @@
 
 <ion-content>
 
-  <ion-item-divider color="light" style="margin-bottom: 2%">
+  <ion-item-divider color="light" style="margin-bottom: 1%">
     <h1><b>Wardrobe</b></h1>
   </ion-item-divider>
 
@@ -33,7 +33,7 @@
             </ion-row>
 
             <ion-row>
-                <p style="font-size: x-small">{{garment.name}}</p>
+              <p style="font-size: x-small">{{garment.name}}</p>
             </ion-row>
 
             <ion-row>
@@ -42,7 +42,7 @@
               </ion-col>
 
               <ion-col>
-                <button ion-button  color="danger" (click)="removeGarment(garment)">
+                <button ion-button color="danger" (click)="removeGarment(garment)">
                   <ion-icon name='trash'></ion-icon>
                 </button>
               </ion-col>
@@ -52,5 +52,7 @@
         </ion-slide>
       </ion-slides>
     </div>
+
+  </ion-list>
 
 </ion-content>
