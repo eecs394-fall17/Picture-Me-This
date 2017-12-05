@@ -1,31 +1,30 @@
-## Synopsis
+## StyleUp
 
-At the top of the file there should be a short introduction and/ or overview that explains **what** the project is. This description should match descriptions added for package managers (Gemspec, package.json, etc.)
+A cross-platform mobile app project built with [Ionic](https://ionicframework.com/docs) that lets you generate matching outfits from your wardrobe.
 
-## Code Example
+Built for Northwestern's EECS 394 Agile Software Development course in collaboration with MPD2 clients.
 
-Show what the library does as concisely as possible, developers should be able to figure out **how** your project solves their problem by looking at the code example. Make sure the API you are showing off is obvious, and that your code is short and concise.
-
-## Motivation
-
-A short description of the motivation behind the creation and maintenance of the project. This should explain **why** the project exists.
+Dev team: Anne Barrett, Eric Hao, Michael Martinez
 
 ## Installation
 
-Provide code examples and explanations of how to get the project.
+[Install Node.js](https://nodejs.org/en/download/package-manager/).
 
-## API Reference
+[Install Ionic](https://ionicframework.com/docs/intro/installation/).
 
-Depending on the size of the project, if it is small and simple enough the reference docs can be added to the README. For medium size to larger projects it is important to at least provide a link to where the API reference docs live.
+Clone this repository and install dependencies.
+```
+git clone https://github.com/eecs394-fall17/StyleUp.git
+cd StyleUp
+npm install
+```
 
-## Tests
+[Run the app in-browser](https://ionicframework.com/docs/intro/tutorial/#viewing-the-app-in-a-browser) with `ionic serve`.
 
-Describe and show how to run the tests with code examples.
-
-## Contributors
-
-Let people know how they can dive into the project, include important links to things like issue trackers, irc, twitter accounts if applicable.
+or [on your phone](https://ionicframework.com/docs/intro/deploying/).
 
 ## License
 
-A short snippet describing the license (MIT, Apache, etc.)
+StyleUp is free software, and may be redistributed under the terms specified in the [LICENSE] file.
+
+[LICENSE]: /LICENSE
