@@ -88,9 +88,8 @@ export class AddItemPage {
           position: 'top'
       }).present();
 
+      // continue to HomePage.
       this.pushOptions(this.garment);
-    // continue to HomePage.
-    //this.navCtrl.parent.select(0);
     }, err => {
       console.log(err);
     });

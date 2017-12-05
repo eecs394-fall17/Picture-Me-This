@@ -26,12 +26,6 @@
 
   <ion-grid text-center *ngFor="let itemsObj of [{type: 'Top', items: this.topItems}, {type: 'Bottom', items: this.bottomItems}, {type: 'Shoe', items: this.shoeItems}]">
 
-    <!--<ion-row *ngIf="!this.finalized">-->
-      <!--<ion-col col-auto>-->
-        <!--<p>{{itemsObj.items.item.name}}</p>-->
-      <!--</ion-col>-->
-    <!--</ion-row>-->
-
     <ion-row>
       <ion-col col-auto *ngIf="this.garment.type != itemsObj.type && !this.finalized">
         <button ion-button (click)="previousItem(itemsObj.items)" style="height: 100%">
@@ -52,7 +46,6 @@
 
   <br/>
   <div padding>
-    <!--<button ion-button (click)="this.navCtrl.parent.select(0)" block large>Get Dressed!</button>-->
     <button ion-button (click)="finalizeOutfit()" block large *ngIf="!this.finalized">Get Dressed!</button>
   </div>
 </ion-content>

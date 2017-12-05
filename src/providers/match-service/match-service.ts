@@ -43,7 +43,7 @@ export class MatchServiceProvider {
 
   getMatchingColors(color) {
     let matchingColors = [];
-    var i = 0;
+    let i = 0;
 
     if (this.colors.indexOf(color) < 0) {
       for (i = 0; i < this.colors.length; i++) {
