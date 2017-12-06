@@ -4,7 +4,9 @@ A cross-platform mobile app project built with [Ionic](https://ionicframework.co
 
 Built for Northwestern's EECS 394 Agile Software Development course in collaboration with MPD2 clients.
 
-Development Team: [Anne Barrett](https://github.com/anneb1397), [Eric Hao](https://github.com/brotatotes/), [Michael Martinez](https://github.com/freetostones)
+**Development Team**: [Anne Barrett](https://github.com/anneb1397), [Eric Hao](https://github.com/brotatotes/), [Michael Martinez](https://github.com/freetostones)
+
+**Client Team**: Adam Bazer (HIMSS), Joshua Buck (Northrop Grumman), Sabrina Katz (UIC), Megan McAdams (Mars Wrigley Con.), Daniel Meer (Motorola Mobility), Joe Schmitz (Borg Warner), Jon Sullivan (Shure)
 
 ## Installation
 
