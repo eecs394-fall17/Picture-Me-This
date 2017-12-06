@@ -27,13 +27,27 @@ To run this app with your own Firebase database, you will need to [create one](h
 
 ## Database Conventions
 
-The app is built with a particular database structuring in mind. Within Firebase Firestore, there should be a collection called Users that stores userIds as documents. Each individual User has three collections: Tops, Bottoms, and Shoes. This can be expanded to have multiple collections of other types as well such as Jackets, Jewelry, etc. if desired. Within each collection, there are documents identified by the name of the clothing item. These documents contain field information about each piece of clothing including: color, name, clothing type (top, bottom, shoe), and an imageURL. 
+The app is built with a particular database structure in mind. Within Firebase Firestore, there is a collection called Users that stores userIds as documents. Each individual User has three collections: Tops, Bottoms, and Shoes. This can be expanded to have multiple collections of other types as well such as Jackets, Jewelry, etc. Within each collection, there are documents identified by the name of the clothing item. These documents contain field information about each piece of [garment] including: color, name, clothing type (top, bottom, shoe), and an [imageURL].
 
-This imageURL is the Firebase Storage URL associated with that piece of clothing. The Firebase Storage has an almost identical structure to the Firbase Firestore. So to access an entry and image in either, the general chain of reference would be: Users/username/collection/clothingName.
+The [imageURL] is the Firebase Storage URL associated with that piece of clothing. The Firebase Storage has an almost identical structure to the Firebase Firestore. So to access an entry and image in either, the general chain of reference would be: `Users -> username -> collection -> clothingName`.
+
+[garment]: /src/models/garment.ts
+[imageURL]: https://firebase.google.com/docs/storage/web/download-files
 
 ## Limitations
 
-Currently, the app does not have the functionality to support multiple users. The app also only supports three types of basic clothing: Tops, Bottoms and Shoes and requires users to manually input data about each clothing item. There is no way to inform the app of when a bad color match has been made and the matching algorithm does not consider the styles of clothing items (i.e. sweatpants could be paired with heels).
+- No functionality to support separate users.
+- Only supports three types of basic clothing: Tops, Bottoms, and Shoes.
+- Requires users to manually input data about each clothing item.
+- No way to correct matches when an undesirable item is matched.
+- The [matching algorithm] does not consider the styles of clothing items (i.e. sweatpants could be paired with heels).
+- There is no way to customize the [matching algorithm].
+
+[matching algorithm]: /src/providers/match-service/match-service.ts
+
+## Known Bugs
+
+- On the [AddItemPage](/src/pages/add-item/add-item.ts), fields are not being reset after an item is saved. Coming back to this page a second time, all the fields are pre-filled with data from a previous saved clothing. 
 
 ## License
 

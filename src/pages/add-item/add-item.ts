@@ -90,6 +90,8 @@ export class AddItemPage {
 
       // continue to HomePage.
       this.pushOptions(this.garment);
+
+      // TODO reset this page after successfully saving an item.
     }, err => {
       console.log(err);
     });
