@@ -31,6 +31,10 @@ The app is built with a particular database structuring in mind. Within Firebase
 
 This imageURL is the Firebase Storage URL associated with that piece of clothing. The Firebase Storage has an almost identical structure to the Firbase Firestore. So to access an entry and image in either, the general chain of reference would be: Users/username/collection/clothingName.
 
+## Limitations
+
+Currently, the app does not have the functionality to support multiple users. The app also only supports three types of basic clothing: Tops, Bottoms and Shoes and requires users to manually input data about each clothing item. There is no way to inform the app of when a bad color match has been made and the matching algorithm does not consider the styles of clothing items (i.e. sweatpants could be paired with heels).
+
 ## License
 
 StyleUp is free software, and may be redistributed under the terms specified in the [LICENSE] file.
