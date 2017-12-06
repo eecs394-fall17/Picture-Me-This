@@ -25,6 +25,12 @@ To run this app with your own Firebase database, you will need to [create one](h
 
 [Run the app in-browser](https://ionicframework.com/docs/intro/tutorial/#viewing-the-app-in-a-browser) with `ionic serve` or [on your phone](https://ionicframework.com/docs/intro/deploying/).
 
+## Database Conventions
+
+The app is built with a particular database structuring in mind. Within Firebase Firestore, there should be a collection called Users that stores userIds as documents. Each individual User has three collections: Tops, Bottoms, and Shoes. This can be expanded to have multiple collections of other types as well such as Jackets, Jewelry, etc. if desired. Within each collection, there are documents identified by the name of the clothing item. These documents contain field information about each piece of clothing including: color, name, clothing type (top, bottom, shoe), and an imageURL. 
+
+This imageURL is the Firebase Storage URL associated with that piece of clothing. The Firebase Storage has an almost identical structure to the Firbase Firestore. So to access an entry and image in either, the general chain of reference would be: Users/username/collection/clothingName.
+
 ## License
 
 StyleUp is free software, and may be redistributed under the terms specified in the [LICENSE] file.
