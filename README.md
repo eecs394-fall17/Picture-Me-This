@@ -1,5 +1,7 @@
 ## StyleUp
 
+![StyleUp App Screenshot](/src/assets/imgs/app.png)
+
 A cross-platform mobile app project built with [Ionic](https://ionicframework.com/docs) that lets you generate matching outfits from your wardrobe.
 
 Built for Northwestern's EECS 394 Agile Software Development course in collaboration with MPD2 clients.
@@ -47,7 +49,7 @@ The [imageURL] is the Firebase Storage URL associated with that piece of clothin
 
 ## Known Bugs
 
-- On the [AddItemPage](/src/pages/add-item/add-item.ts), fields are not being reset after an item is saved. Coming back to this page a second time, all the fields are pre-filled with data from a previous saved clothing. 
+- On the [AddItemPage](/src/pages/add-item/add-item.ts), fields are not being reset after an item is saved. Coming back to this page a second time, all the fields are pre-filled with data from a previous saved clothing.
 
 ## License
 
