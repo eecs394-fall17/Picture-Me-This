@@ -4,7 +4,7 @@ A cross-platform mobile app project built with [Ionic](https://ionicframework.co
 
 Built for Northwestern's EECS 394 Agile Software Development course in collaboration with MPD2 clients.
 
-Dev team: Anne Barrett, Eric Hao, Michael Martinez
+Development Team: [Anne Barrett](https://github.com/anneb1397), [Eric Hao](https://github.com/brotatotes/), [Michael Martinez](https://github.com/freetostones)
 
 ## Installation
 
@@ -19,9 +19,9 @@ cd StyleUp
 npm install
 ```
 
-[Run the app in-browser](https://ionicframework.com/docs/intro/tutorial/#viewing-the-app-in-a-browser) with `ionic serve`.
+To run this app with your own Firebase database, you will need to [create one](https://firebase.google.com/docs/web/setup?authuser=1). Replace your new Firebase credentials in `StyleUp/src/app/app.environment.config.ts` to link StyleUp to your database.
 
-or [on your phone](https://ionicframework.com/docs/intro/deploying/).
+[Run the app in-browser](https://ionicframework.com/docs/intro/tutorial/#viewing-the-app-in-a-browser) with `ionic serve` or [on your phone](https://ionicframework.com/docs/intro/deploying/).
 
 ## License
 
